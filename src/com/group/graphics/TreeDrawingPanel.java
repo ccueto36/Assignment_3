@@ -4,6 +4,7 @@ package com.group.graphics;
 import com.group.BST.BSTreeNode;
 import com.group.Tools.Location;
 import java.awt.Color;
+import java.awt.Font;
 
 
 
@@ -116,9 +117,10 @@ public class TreeDrawingPanel extends StdDrawJPanel {
     
     public void paintDot(Location location, String value){        
         //if ((location.x >= getMaxX()) || (location.y >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
-        picture(location.x, location.y, TreeDrawingPanel.BRIGHT_GREEN_ICON ,1.7,1.7);
-        setPenColor(Color.WHITE);
-        //setPenColor(Color.BLACK);
+        picture(location.x, location.y, TreeDrawingPanel.BRIGHT_GREEN_ICON_PRESSED ,1.7,1.7);
+        setPenColor(Color.BLACK);
+        Font font = new Font("SansSerif", Font.PLAIN, 25);
+        setFont(font);
         text(location.x, location.y, value);
     }
     public void paintLine(double x0, double y0, double x1, double y1) {
@@ -127,20 +129,20 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         line(x0, y0, x1, y1);
     }
     
-     public void draw_node(TreeDrawingPanel t, BSTreeNode n, Location pos, double o) {
-        t.paintDot(pos, Integer.toString((int) n.getData()));
-        if (n.getLeft() != null) {
-            Location l = new Location(pos.x - o, pos.y - 2);
-            t.paintLine(pos.x, pos.y, l.x, l.y);
-            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
-            draw_node(t, n.getLeft(), l, o / 2);
+     public void draw_node(BSTreeNode node, Location pos, double offset) {
+        paintDot(pos, Integer.toString((int) node.getData()));
+        if (node.getLeft() != null) {
+            Location loc = new Location(pos.x - offset, pos.y - 2);
+            paintLine(pos.x, pos.y, loc.x, loc.y);
+            paintDot(pos, Integer.toString((int)node.getData())); // redraws circle over the line
+            draw_node(node.getLeft(), loc, offset / 2);
         }
 
-        if (n.getRight() != null) {
-            Location l = new Location(pos.x + o, pos.y - 2);
-            t.paintLine(pos.x, pos.y, l.x, l.y);
-            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
-            draw_node(t, n.getRight(), l, o / 2);
+        if (node.getRight() != null) {
+            Location loc = new Location(pos.x + offset, pos.y - 2);
+            paintLine(pos.x, pos.y, loc.x, loc.y);
+            paintDot(pos, Integer.toString((int) node.getData())); // redraws circle over the line
+            draw_node(node.getRight(), loc, offset / 2);
         }
     }
     

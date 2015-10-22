@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
 import com.group.BST.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,7 +26,6 @@ public class Assignment_3 {
         TreeDrawingPanel stdDrawJPanel = new TreeDrawingPanel();
         JFrame frame = new JFrame();
 
-        stdDrawJPanel.clear(Color.BLUE);
         stdDrawJPanel.clear(Color.WHITE);
 
         frame.setResizable(true);
@@ -41,6 +42,7 @@ public class Assignment_3 {
 //        constrains.gridx = 0;
 //        constrains.gridy = 0;
 //
+        
         double screenWidth = 30.0;
         double screenHeight = 30.0;
         stdDrawJPanel.setXscale(0, screenWidth);
@@ -49,11 +51,11 @@ public class Assignment_3 {
 
         BSTree tree = new BSTree();
 
-        tree.add(50);
+        
         for (int i = 0; i < 17; i++) {
-            tree.add((int) (Math.random() * 100));
+            tree.add((int) (Math.random() * 10));
         }
-        stdDrawJPanel.draw_node(stdDrawJPanel, tree.root, new Location(screenWidth / 2.0, screenHeight - 1.0), screenWidth / 4.0);
+        stdDrawJPanel.draw_node(tree.root, new Location(screenWidth / 2.0, screenHeight - 1.0), screenWidth / 4.0);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
        //stdDrawJPanel.picture(5, 9, TreeDrawingPanel.BRIGHT_GREEN_ICON,0.9,0.9);
