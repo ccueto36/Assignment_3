@@ -1,6 +1,7 @@
 package com.group.BST;
 
 
+import com.group.Tools.ArrayLocation;
 import com.group.Tools.Location;
 import com.group.Tools.Location;
 
@@ -21,7 +22,7 @@ import com.group.Tools.Location;
 
 public class DSTreeAsArray<T> {
     private T[][] valuesArray;
-    private Location[][] connectionsArray;
+    private ArrayLocation[][] connectionsArray;
     private ArrayLocation selectedLocation;
 
     /**
@@ -37,7 +38,7 @@ public class DSTreeAsArray<T> {
      * value storages the location of the position he is pointing to. if null, 
      * means that it is not pointing to anyone
      */
-    public Location[][] getConnectionsArray() {
+    public ArrayLocation[][] getConnectionsArray() {
         return connectionsArray;
     }
 
@@ -74,32 +75,20 @@ public class DSTreeAsArray<T> {
     public void clearSelectedLocation(){
         this.selectedLocation = null;
     }
-    
-    private class ArrayLocation{
-        private Location target;
-        private Location caller;
 
-        public ArrayLocation() {
-            target = null;
-            caller = null;
-        }
-        
-        public Location getTarget(){
-            return this.target;
-        }
-        
-        public Location getCaller(){
-            return this.caller;
-        }
-        
-        public void setTarget(Location location){
-            this.target = location;
-        }
-        
-        public void setCaller(Location location){
-            this.caller = location;
-        }
-        
+    /**
+     * for testing purposes!!!
+     * @param connectionsArray 
+     */
+    public void setConnectionsArray(ArrayLocation[][] connectionsArray) {
+        this.connectionsArray = connectionsArray;
     }
-    
+
+    /**
+     * For testing purposes only!
+     * @param valuesArray 
+     */
+    public void setValuesArray(T[][] valuesArray) {
+        this.valuesArray = valuesArray;
+    }    
 }

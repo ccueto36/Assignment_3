@@ -1,7 +1,11 @@
 package com.group.graphics;
 
 
+import com.group.BST.BSTree;
+import com.group.BST.DSTreeAsArray;
+import com.group.BST.DSTreeAsArray.*;
 import com.group.Tools.Location;
+import com.group.Tools.ArrayLocation;
 
 
 
@@ -108,16 +112,50 @@ public class TreeDrawingPanel extends StdDrawJPanel {
     
     /**
      * 
-     * @param location the location in the panel where we want to paint the icon
-     * @param icon the path of the dot to be painted
-     * @throws IllegalArgumentException if the location is not in the scale
+     * @param location the location in the panel where we want to paint the icon.
+     * @param icon the path of the dot to be painted.
+     * @throws IllegalArgumentException if the location is not in the scale.
      */
     private void paintDot(Location location, String icon){        
            if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
            
-           picture(5, 5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.5,0.5);
+           picture(location.getX() + 0.5, location.getY() + 0.5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.5,0.5);
            
         }
     
-    
+    public void paintTree(BSTree tree){
+        DSTreeAsArray treeAsArray = new DSTreeAsArray(tree);
+        
+        /**
+         * testing purposes
+         */
+        Object values[][] = new Object[3][2];
+        values[0][0] = null;
+        values[0][1] = 4;
+        values[0][2] = null;
+        
+        values[1][0] = 6;
+        values[1][1] = null;
+        values[1][2] = 8;
+        
+        treeAsArray.setValuesArray(values);
+        
+        ArrayLocation valuess[][] = new ArrayLocation[3][2];
+        
+        values[0][0] = null;
+        values[0][1] = new ArrayLocation(new Location[]{new Location(1,0), new Location(1,2)},null);
+        values[0][2] = null;
+        
+        values[1][0] = new ArrayLocation(null,new Location(0, 1));
+        values[1][1] = null;
+        values[1][2] = new ArrayLocation(null,new Location(0, 1));
+        
+        treeAsArray.setConnectionsArray(valuess);
+        /***********************************************************************
+         * final insertion value test 
+         ***********************************************************************/
+        
+        
+        
+    }
 }
