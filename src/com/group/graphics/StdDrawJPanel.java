@@ -12,6 +12,7 @@ package com.group.graphics;
  */
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FileDialog;
@@ -244,7 +245,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     
     private void init(){      
         
-        setPreferredSize(new Dimension(width, height));
+        //setPreferredSize(new Dimension(width, height));
         
         offscreenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         onscreenImage  = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -279,8 +280,10 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         draw.addMouseListener(this);
         draw.addMouseMotionListener(this);
         
-        add(draw);
-        setVisible(true);
+        removeAll();
+        add(draw,BorderLayout.CENTER); 
+        
+ 
         
         
     }
@@ -326,6 +329,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             xmin = min - BORDER * size;
             xmax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**
@@ -342,6 +347,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             ymin = min - BORDER * size;
             ymax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**
@@ -360,6 +367,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             ymin = min - BORDER * size;
             ymax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**

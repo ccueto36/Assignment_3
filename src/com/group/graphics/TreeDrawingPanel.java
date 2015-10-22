@@ -116,15 +116,16 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @param icon the path of the dot to be painted.
      * @throws IllegalArgumentException if the location is not in the scale.
      */
-    private void paintDot(Location location, String icon){        
+    private void paintDot(Location location, String icon, Object value){        
            if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
            
            picture(location.getX() + 0.5, location.getY() + 0.5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.5,0.5);
-           
+           text(location.getX() + 0.5, location.getY() + 0.5,value.toString() );
         }
     
-    public void paintTree(BSTree tree){
-        DSTreeAsArray treeAsArray = new DSTreeAsArray(tree);
+//    public void paintTree(BSTree tree){
+     public void paintTree(){
+        DSTreeAsArray treeAsArray = new DSTreeAsArray(new BSTree<Integer>());
         
         /**
          * testing purposes
@@ -155,6 +156,15 @@ public class TreeDrawingPanel extends StdDrawJPanel {
          * final insertion value test 
          ***********************************************************************/
         
+        setXscale(0, treeAsArray.getWitdh());
+        setYscale(0, treeAsArray.getHeight());
+        
+        for (int i = 0; i < treeAsArray.getWitdh(); i++) {
+            for (int j = 0; j < treeAsArray.getHeight(); j++) {
+                if(treeAsArray.getValuesArray()[i][j] != null)
+                    paintDot(new Location(i, j), RED_ICON, treeAsArray.getValuesArray()[i][j]);
+            }
+        }
         
         
     }

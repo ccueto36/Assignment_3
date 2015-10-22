@@ -91,4 +91,12 @@ public class DSTreeAsArray<T> {
     public void setValuesArray(T[][] valuesArray) {
         this.valuesArray = valuesArray;
     }    
+    
+    public int getWitdh(){
+        return valuesArray.length;
+    }
+    
+    public int getHeight(){
+        return valuesArray[0].length;
+    }
 }
