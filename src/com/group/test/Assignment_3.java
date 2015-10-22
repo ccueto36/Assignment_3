@@ -4,11 +4,8 @@ import com.group.graphics.TreeDrawingPanel;
 import com.group.Tools.Location;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import javax.swing.JFrame;
-import com.group.BST.BSTree;
-import com.group.BST.BSTreeNode;
+import com.group.BST.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,25 +17,6 @@ import com.group.BST.BSTreeNode;
  * @author admin
  */
 public class Assignment_3 {
-
-    public static void draw_node(TreeDrawingPanel t, BSTreeNode n, Location pos, double o) {
-        t.paintDot(pos, Integer.toString((int) n.getData()));
-
-        if (n.getLeft() != null) {
-            Location l = new Location(pos.x - o, pos.y - 2);
-            t.paintLine(pos.x, pos.y, l.x, l.y);
-            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
-            draw_node(t, n.getLeft(), l, o / 2);
-        }
-
-        if (n.getRight() != null) {
-            Location l = new Location(pos.x + o, pos.y - 2);
-            t.paintLine(pos.x, pos.y, l.x, l.y);
-            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
-            draw_node(t, n.getRight(), l, o / 2);
-        }
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -75,7 +53,7 @@ public class Assignment_3 {
         for (int i = 0; i < 17; i++) {
             tree.add((int) (Math.random() * 100));
         }
-        draw_node(stdDrawJPanel, tree.root, new Location(screenWidth / 2.0, screenHeight - 1.0), screenWidth / 4.0);
+        stdDrawJPanel.draw_node(stdDrawJPanel, tree.root, new Location(screenWidth / 2.0, screenHeight - 1.0), screenWidth / 4.0);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
        //stdDrawJPanel.picture(5, 9, TreeDrawingPanel.BRIGHT_GREEN_ICON,0.9,0.9);

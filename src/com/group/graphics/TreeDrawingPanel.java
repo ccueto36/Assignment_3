@@ -1,6 +1,7 @@
 package com.group.graphics;
 
 
+import com.group.BST.BSTreeNode;
 import com.group.Tools.Location;
 import java.awt.Color;
 
@@ -124,6 +125,23 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         setPenColor(Color.BLACK);
         setPenRadius();
         line(x0, y0, x1, y1);
+    }
+    
+     public void draw_node(TreeDrawingPanel t, BSTreeNode n, Location pos, double o) {
+        t.paintDot(pos, Integer.toString((int) n.getData()));
+        if (n.getLeft() != null) {
+            Location l = new Location(pos.x - o, pos.y - 2);
+            t.paintLine(pos.x, pos.y, l.x, l.y);
+            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
+            draw_node(t, n.getLeft(), l, o / 2);
+        }
+
+        if (n.getRight() != null) {
+            Location l = new Location(pos.x + o, pos.y - 2);
+            t.paintLine(pos.x, pos.y, l.x, l.y);
+            t.paintDot(pos, Integer.toString((int) n.getData())); // redraws circle over the line
+            draw_node(t, n.getRight(), l, o / 2);
+        }
     }
     
     
