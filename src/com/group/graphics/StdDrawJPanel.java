@@ -154,7 +154,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
     
     // default canvas size is DEFAULT_SIZE-by-DEFAULT_SIZE
-    private static final int DEFAULT_SIZE = 512;
+    private static final int DEFAULT_SIZE = 512*2;
     
      // default pen radius
     private static final double DEFAULT_PEN_RADIUS = 0.002;
