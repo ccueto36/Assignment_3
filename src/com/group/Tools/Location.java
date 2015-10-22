@@ -12,20 +12,19 @@ package com.group.Tools;
  */
 public class Location {
     
-    private final int x;
-    
-    private final int y;
+    public double x;
+    public double y;
 
-    public Location(int x, int y) {
+    public Location(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
     

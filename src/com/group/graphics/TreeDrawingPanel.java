@@ -2,7 +2,7 @@ package com.group.graphics;
 
 
 import com.group.Tools.Location;
-
+import java.awt.Color;
 
 
 
@@ -112,12 +112,19 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @param icon the path of the dot to be painted
      * @throws IllegalArgumentException if the location is not in the scale
      */
-    private void paintDot(Location location, String icon){        
-           if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
-           
-           picture(5, 5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.5,0.5);
-           
-        }
+    
+    public void paintDot(Location location, String value){        
+        //if ((location.x >= getMaxX()) || (location.y >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
+        picture(location.x, location.y, TreeDrawingPanel.BRIGHT_GREEN_ICON ,1.7,1.7);
+        setPenColor(Color.WHITE);
+        //setPenColor(Color.BLACK);
+        text(location.x, location.y, value);
+    }
+    public void paintLine(double x0, double y0, double x1, double y1) {
+        setPenColor(Color.BLACK);
+        setPenRadius();
+        line(x0, y0, x1, y1);
+    }
     
     
 }

@@ -22,14 +22,17 @@ public class BSTree<T> implements Comparable<T>{
              return new BSTreeNode(v);
         }
 
-        if(n.data < v)
+        if(v < n.data)
         {
           n.left = add(n.left, v);  
         }
 
-        else 
+        else if (v > n.data)
         {
             n.right = add(n.right, v);
+        }
+        else {
+            // don't add a duplicate!!
         }
         return n;
     }
