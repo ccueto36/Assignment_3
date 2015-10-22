@@ -9,16 +9,73 @@ package com.group.BST;
  *
  * @author admin
  */
-public class BSTree<T> implements Comparable<T>{
 
+
+public class BSTree<T> implements Comparable<T>{
+    
+    public BSTreeNode root;
+
+    private BSTreeNode add(BSTreeNode n, int v)
+    {
+        if(n == null)
+        {
+             return new BSTreeNode(v);
+        }
+
+        if(n.data < v)
+        {
+          n.left = add(n.left, v);  
+        }
+
+        else 
+        {
+            n.right = add(n.right, v);
+        }
+        return n;
+    }
+    
+    public void add(int v)
+    {
+        this.root = add(root, v);
+    }
+    
+    public void print()
+    {
+        print(root);
+    }
+    
+    //in-order traversal
+    public void print(BSTreeNode n)
+    {
+      if(n == null) return;
+      print(n.left);
+      System.out.println(n.data);
+      print(n.right);
+      
+    }
+    
     @Override
     public int compareTo(T t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return 0; 
     }
     
     
-    public int getMaxLevel(){
-        return 0;
+    public int getLevel(BSTreeNode n, int data, int level){
+        
+        if (n == null) return 0;
+        if (n.data == data) return level;
+        
+        int downlevel = getLevel(n.left, data, level++);
+        if(downlevel != 0) return downlevel;
+        
+        downlevel = getLevel(n.right, data, level++);
+        return downlevel;
+    }
+    
+    
+    public int getLevel(BSTreeNode n, int data)
+    {
+     return getLevel(n, data, 1);   
     }
     
     public int getTreeWidth(){

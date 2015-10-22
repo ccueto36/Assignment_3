@@ -25,82 +25,82 @@ public class TreeDrawingPanel extends StdDrawJPanel {
     /*
     * The bright green icon path
     */
-    public static String BRIGHT_GREEN_ICON = "icons\\brightGreen_dot.png";
+    public final static String BRIGHT_GREEN_ICON = "icons\\brightGreen_dot.png";
     
     /*
     * The dark blue icon path
     */
-    public static String DARK_BLUE_ICON = "icons\\darkBlue_dot.png";
+    public final static String DARK_BLUE_ICON = "icons\\darkBlue_dot.png";
     
     /*
     * The dark purple icon path
     */
-    public static String DARK_PURPLE_ICON = "icons\\darkPurple_dot.png";
+    public final static String DARK_PURPLE_ICON = "icons\\darkPurple_dot.png";
     
     /*
     * The light blue icon path
     */
-    public static String LIGHT_BLUE_ICON = "icons\\lightBlue_dot.png";
+    public final static String LIGHT_BLUE_ICON = "icons\\lightBlue_dot.png";
     
     /*
     * The light green icon path
     */
-    public static String LIGHT_GREEN_ICON = "icons\\lightGreen_dot.png";
+    public final static String LIGHT_GREEN_ICON = "icons\\lightGreen_dot.png";
     
     /*
     * The orange icon path
     */
-    public static String ORANGE_ICON = "icons\\orange_dot.png";
+    public final static String ORANGE_ICON = "icons\\orange_dot.png";
     
     /*
     * The red icon path
     */
-    public static String RED_ICON = "icons\\red_dot.png";
+    public final static String RED_ICON = "icons\\red_dot.png";
     
     /*
     * The yellow icon path
     */
-    public static String YELLOW_ICON = "icons\\yellow_dot.png";
+    public final static String YELLOW_ICON = "icons\\yellow_dot.png";
     
     /*
     * The yellow icon pressed path
     */
-    public static String YELLOW_ICON_PRESSED = "icons\\yellow_dot_pressed.png";
+    public final static String YELLOW_ICON_PRESSED = "icons\\yellow_dot_pressed.png";
     
     /*
     * The bright green icon pressed path
     */
-    public static String BRIGHT_GREEN_ICON_PRESSED = "icons\\brightGreen_dot_pressed.png";
+    public final static String BRIGHT_GREEN_ICON_PRESSED = "icons\\brightGreen_dot_pressed.png";
     
     /*
     * The dark blue icon pressed path
     */
-    public static String DARK_BLUE_ICON_PRESSED = "icons\\darkBlue_dot_pressed.png";
+    public final static String DARK_BLUE_ICON_PRESSED = "icons\\darkBlue_dot_pressed.png";
     
     /*
     * The dark purple icon pressed path
     */
-    public static String DARK_PURPLE_ICON_PRESSED = "icons\\darkPurple_dot_pressed.png";
+    public final static String DARK_PURPLE_ICON_PRESSED = "icons\\darkPurple_dot_pressed.png";
     
     /*
     * The light blue icon pressed path
     */
-    public static String LIGHT_BLUE_ICON_PRESSED = "icons\\lightBlue_dot_pressed.png";
+    public final static String LIGHT_BLUE_ICON_PRESSED = "icons\\lightBlue_dot_pressed.png";
     
     /*
     * The light green icon pressed path
     */
-    public static String LIGHT_GREEN_ICON_PRESSED= "icons\\lightGreen_dot_pressed.png";
+    public final static String LIGHT_GREEN_ICON_PRESSED= "icons\\lightGreen_dot_pressed.png";
     
     /*
     * The orange icon pressed path
     */
-    public static String ORANGE_ICON_PRESSED = "icons\\orange_dot_pressed.png";
+    public final static String ORANGE_ICON_PRESSED = "icons\\orange_dot_pressed.png";
     
     /*
     * The red icon pressed path
     */
-    public static String RED_ICON_PRESSED = "icons\\red_dot_pressed.png";
+    public final static String RED_ICON_PRESSED = "icons\\red_dot_pressed.png";
     
     public TreeDrawingPanel() {
         super();
