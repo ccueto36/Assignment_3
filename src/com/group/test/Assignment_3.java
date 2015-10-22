@@ -34,13 +34,8 @@ public class Assignment_3 {
                 init();
             }
         });
-        drawingPanel.clear(Color.BLUE);
-        drawingPanel.setCanvasSize(700, 700);
-        drawingPanel.line(0, 0, 1, 1);
         
-        
-//        drawingPanel.setScale(0, 10);
-//        drawingPanel.line(0, 0, 1, 1);
+       drawingPanel.paintTree();
     }
 
         

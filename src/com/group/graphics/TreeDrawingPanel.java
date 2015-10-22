@@ -6,6 +6,7 @@ import com.group.BST.DSTreeAsArray;
 import com.group.BST.DSTreeAsArray.*;
 import com.group.Tools.Location;
 import com.group.Tools.ArrayLocation;
+import java.awt.Color;
 
 
 
@@ -116,11 +117,13 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @param icon the path of the dot to be painted.
      * @throws IllegalArgumentException if the location is not in the scale.
      */
-    private void paintDot(Location location, String icon, Object value){        
-           if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
+    private void paintDot(Location location, String icon, String value){        
+          // if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
            
-           picture(location.getX() + 0.5, location.getY() + 0.5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.5,0.5);
-           text(location.getX() + 0.5, location.getY() + 0.5,value.toString() );
+           picture(location.getX() + 0.5, location.getY() + 0.5, icon ,0.9,0.9);
+           
+           setPenColor(Color.WHITE);
+           text(location.getX() + 0.5, location.getY() + 0.5, value);
         }
     
 //    public void paintTree(BSTree tree){
@@ -130,7 +133,7 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         /**
          * testing purposes
          */
-        Object values[][] = new Object[3][2];
+        Object values[][] = new Object[2][3];
         values[0][0] = null;
         values[0][1] = 4;
         values[0][2] = null;
@@ -155,16 +158,29 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         /***********************************************************************
          * final insertion value test 
          ***********************************************************************/
-        
-        setXscale(0, treeAsArray.getWitdh());
-        setYscale(0, treeAsArray.getHeight());
-        
+        if((treeAsArray.getWitdh() >= 16)){
+            setXscale(0, treeAsArray.getWitdh());
+            setYscale(0, treeAsArray.getHeight());
+        }
+        else
+        {
+            setXscale(0, 15);
+            setYscale(0, 15);
+        }
+        int b = 0;
         for (int i = 0; i < treeAsArray.getWitdh(); i++) {
             for (int j = 0; j < treeAsArray.getHeight(); j++) {
-                if(treeAsArray.getValuesArray()[i][j] != null)
-                    paintDot(new Location(i, j), RED_ICON, treeAsArray.getValuesArray()[i][j]);
+                if(treeAsArray.getValuesArray()[i][j] != null){
+                    paintDot(new Location(j, i), ORANGE_ICON, Integer.toString(b));
+                    b++;
+                }
+                    
             }
         }
+        
+//         paintDot(new Location(0,0), RED_ICON, "1");
+//         paintDot(new Location(1,0), DARK_BLUE_ICON, "2");
+//         paintDot(new Location(2,0), YELLOW_ICON, "3");
         
         
     }

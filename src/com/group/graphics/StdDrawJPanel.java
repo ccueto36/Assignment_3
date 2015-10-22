@@ -255,8 +255,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         setYscale();
         
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
-        offscreen.fillRect(0, 0, width, height);
-        
+        offscreen.fillRect(0, 0, width, height);  
         
         setPenColor();
         setPenRadius();
@@ -276,6 +275,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         //Jpanel stuff
         ImageIcon icon = new ImageIcon(onscreenImage);
         JLabel draw = new JLabel(icon);
+        
         
         draw.addMouseListener(this);
         draw.addMouseMotionListener(this);
@@ -387,8 +387,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         return xmax;
     }
     // helper functions that scale from user coordinates to screen coordinates and back
-    private double  scaleX(double x) { return width  * (x - xmin) / (xmax - xmin); }
-    private double  scaleY(double y) { return height * (ymax - y) / (ymax - ymin); }
+    private double  scaleX(double x) { return (width  * (x - xmin) / (xmax - xmin)); }
+    private double  scaleY(double y) { return height - (height * (ymax - y) / (ymax - ymin)); }
     private double factorX(double w) { return w * width  / Math.abs(xmax - xmin);  }
     private double factorY(double h) { return h * height / Math.abs(ymax - ymin);  }
     private double   userX(double x) { return xmin + x * (xmax - xmin) / width;    }
