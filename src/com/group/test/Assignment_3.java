@@ -1,13 +1,11 @@
 package com.group.test;
 
 
+import com.group.BST.BSTree;
 import com.group.graphics.TreeDrawingPanel;
-import com.group.Tools.Location;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,52 +18,49 @@ import javax.swing.JFrame;
  */
 public class Assignment_3 {
 
+    static JFrame frame;
+    static TreeDrawingPanel drawingPanel = new TreeDrawingPanel();;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TreeDrawingPanel stdDrawJPanel = new TreeDrawingPanel();
-        JFrame frame = new JFrame();
         
-        stdDrawJPanel.clear(Color.BLUE);
-        frame.add(stdDrawJPanel,BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
+        
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                init();
+            }
+        });
+        
+        BSTree tree = new BSTree();
 
-//        frame.setLayout(new GridBagLayout());
-//
-//        GridBagConstraints constrains = new GridBagConstraints();
-//        constrains.gridx = 0;
-//        constrains.gridy = 0;
-//
-        stdDrawJPanel.setYscale(0, 10);
-        stdDrawJPanel.setXscale(0, 10);
         
-        
-        stdDrawJPanel.clear(Color.WHITE);
-        stdDrawJPanel.setPenRadius(0.05);
-        stdDrawJPanel.setPenColor(stdDrawJPanel.BLUE);
-        stdDrawJPanel.point(0.5, 0.5);
-        stdDrawJPanel.setPenColor(stdDrawJPanel.MAGENTA);
-        stdDrawJPanel.line(0.2, 0.2, 0.8, 0.2);
+       tree.add(50);
        
-       stdDrawJPanel.picture(5.5, 5.5, TreeDrawingPanel.DARK_PURPLE_ICON,0.9,0.9);
-       stdDrawJPanel.picture(6.5, 6.5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.9,0.9);
-       stdDrawJPanel.setPenColor(Color.WHITE);
-       stdDrawJPanel.text(5.5, 5.5, "25");
-       stdDrawJPanel.setPenColor(Color.BLACK);
-       stdDrawJPanel.setPenRadius();
-       stdDrawJPanel.line(5.8,5.8, 6.2, 6.2);
-//
-//        frame.add(stdDrawJPanel, constrains);
-//        frame.setVisible(true);
-//        frame.setSize(500, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         for (int i = 0; i < 100; i++) {
+            tree.add((int) (Math.random() * 100));
+            
+        }
+        
+        drawingPanel.setXscale(0,30);
+        drawingPanel.setYscale(0,30);
+        drawingPanel.paintTree(tree);
     }
 
-    /**
-     * *************************************************************************
-     *
-     **************************************************************************
-     */
+        
+    protected static void init(){
+        frame = new JFrame();
+        
+        
+        
+        //Frame stuff
+        frame.setLayout(new BorderLayout());
+        frame.add(drawingPanel, BorderLayout.CENTER);
+        frame.setResizable(false);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        
+    }
 }
+

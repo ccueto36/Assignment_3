@@ -1,6 +1,7 @@
 package com.group.BST;
 
 
+import com.group.Tools.ArrayLocation;
 import com.group.Tools.Location;
 import com.group.Tools.Location;
 
@@ -11,38 +12,38 @@ import com.group.Tools.Location;
  */
 
 /**
- *  This class takes a regular binary search tree and transform it into a
+ *  This class takes a regular binary search tree and transform it into a 
  * array like representation of the tree. It storages the tree in to arrays:
  * one containing the values and the other containing the connections in the Tree.
  * It also provides a "selectedLocation" property to identify what element its being
  * selected
- * @author Manuel Garcia    //adicto al array as I thought lol
+ * @author Manuel Garcia
  */
 
 public class DSTreeAsArray<T> {
     private T[][] valuesArray;
-    private Location[][] connectionsArray;
+    private ArrayLocation[][] connectionsArray;
     private ArrayLocation selectedLocation;
 
     /**
-     *
+     * 
      */
     public DSTreeAsArray(BSTree<T> tree) {
         selectedLocation = null; //No element selected
     }
 
     /**
-     *
+     * 
      * @return the array containing the connections between nodes. Each array
-     * value storages the location of the position he is pointing to. if null,
+     * value storages the location of the position he is pointing to. if null, 
      * means that it is not pointing to anyone
      */
-    public Location[][] getConnectionsArray() {
+    public ArrayLocation[][] getConnectionsArray() {
         return connectionsArray;
     }
 
     /**
-    *
+    * 
     * @return the array containing the tree's values in a array-like form.
     * if null, means that there is no value to be shown
     */
@@ -51,8 +52,8 @@ public class DSTreeAsArray<T> {
     }
 
     /**
-     *
-     * @return the selected position. if null, means that no value has been
+     * 
+     * @return the selected position. if null, means that no value has been 
      * selected
      */
     public ArrayLocation getSelectedLocation() {
@@ -60,14 +61,14 @@ public class DSTreeAsArray<T> {
     }
 
     /**
-     *
-     * @param selectedLocation sets the location of the selected value in the
+     * 
+     * @param selectedLocation sets the location of the selected value in the 
      * array
      */
     public void setSelectedLocation(ArrayLocation selectedLocation) {
         this.selectedLocation = selectedLocation;
     }
-
+    
     /**
      * Clear the the selectedLocation.
      */
@@ -75,31 +76,27 @@ public class DSTreeAsArray<T> {
         this.selectedLocation = null;
     }
 
-    private class ArrayLocation{
-        private Location target;
-        private Location caller;
-
-        public ArrayLocation() {
-            target = null;
-            caller = null;
-        }
-
-        public Location getTarget(){
-            return this.target;
-        }
-
-        public Location getCaller(){
-            return this.caller;
-        }
-
-        public void setTarget(Location location){
-            this.target = location;
-        }
-
-        public void setCaller(Location location){
-            this.caller = location;
-        }
-
+    /**
+     * for testing purposes!!!
+     * @param connectionsArray 
+     */
+    public void setConnectionsArray(ArrayLocation[][] connectionsArray) {
+        this.connectionsArray = connectionsArray;
     }
 
+    /**
+     * For testing purposes only!
+     * @param valuesArray 
+     */
+    public void setValuesArray(T[][] valuesArray) {
+        this.valuesArray = valuesArray;
+    }    
+    
+    public int getWitdh(){
+        return valuesArray.length;
+    }
+    
+    public int getHeight(){
+        return valuesArray[0].length;
+    }
 }

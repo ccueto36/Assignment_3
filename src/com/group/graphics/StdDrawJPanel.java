@@ -12,6 +12,7 @@ package com.group.graphics;
  */
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FileDialog;
@@ -153,7 +154,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
     
     // default canvas size is DEFAULT_SIZE-by-DEFAULT_SIZE
-    private static final int DEFAULT_SIZE = 512;
+    private static final int DEFAULT_SIZE = 512*2;
     
      // default pen radius
     private static final double DEFAULT_PEN_RADIUS = 0.002;
@@ -244,7 +245,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     
     private void init(){      
         
-        setPreferredSize(new Dimension(width, height));
+        //setPreferredSize(new Dimension(width, height));
         
         offscreenImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         onscreenImage  = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -254,8 +255,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         setYscale();
         
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
-        offscreen.fillRect(0, 0, width, height);
-        
+        offscreen.fillRect(0, 0, width, height);  
         
         setPenColor();
         setPenRadius();
@@ -276,11 +276,14 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         ImageIcon icon = new ImageIcon(onscreenImage);
         JLabel draw = new JLabel(icon);
         
+        
         draw.addMouseListener(this);
         draw.addMouseMotionListener(this);
         
-        add(draw);
-        setVisible(true);
+        removeAll();
+        add(draw,BorderLayout.CENTER); 
+        
+ 
         
         
     }
@@ -326,6 +329,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             xmin = min - BORDER * size;
             xmax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**
@@ -342,6 +347,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             ymin = min - BORDER * size;
             ymax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**
@@ -360,6 +367,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
             ymin = min - BORDER * size;
             ymax = max + BORDER * size;
         }
+        
+        clear();
     }
 
     /**
@@ -378,8 +387,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         return xmax;
     }
     // helper functions that scale from user coordinates to screen coordinates and back
-    private double  scaleX(double x) { return width  * (x - xmin) / (xmax - xmin); }
-    private double  scaleY(double y) { return height * (ymax - y) / (ymax - ymin); }
+    private double  scaleX(double x) { return (width  * (x - xmin) / (xmax - xmin)); }
+    private double  scaleY(double y) { return (height * (ymax - y) / (ymax - ymin)); }
     private double factorX(double w) { return w * width  / Math.abs(xmax - xmin);  }
     private double factorY(double h) { return h * height / Math.abs(ymax - ymin);  }
     private double   userX(double x) { return xmin + x * (xmax - xmin) / width;    }
