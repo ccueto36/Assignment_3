@@ -35,12 +35,15 @@ public class Assignment_3 {
         BSTree tree = new BSTree();
 
         
-        for (int i = 0; i < 25; i++) {
-            tree.add((int) (Math.random() * 10));
+       tree.add(50);
+       
+         for (int i = 0; i < 100; i++) {
+            tree.add((int) (Math.random() * 100));
+            
         }
         
-        drawingPanel.setXscale(0,20);
-        drawingPanel.setYscale(0,20);
+        drawingPanel.setXscale(0,30);
+        drawingPanel.setYscale(0,30);
         drawingPanel.paintTree(tree);
     }
 
