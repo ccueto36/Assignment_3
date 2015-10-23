@@ -2,11 +2,13 @@ package com.group.graphics;
 
 
 import com.group.BST.BSTree;
+import com.group.BST.BSTreeNode;
 import com.group.BST.DSTreeAsArray;
 import com.group.BST.DSTreeAsArray.*;
 import com.group.Tools.Location;
 import com.group.Tools.ArrayLocation;
 import java.awt.Color;
+import java.awt.Font;
 
 
 
@@ -118,70 +120,48 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @throws IllegalArgumentException if the location is not in the scale.
      */
     private void paintDot(Location location, String icon, String value){        
-          // if ((location.getX() >= getMaxX()) || (location.getY() >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
-           
-           picture(location.getX() + 0.5, location.getY() + 0.5, icon ,0.9,0.9);
-           
-           setPenColor(Color.WHITE);
-           text(location.getX() + 0.5, location.getY() + 0.5, value);
+         //if ((location.x >= getMaxX()) || (location.y >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
+        picture(location.x, location.y, icon ,1,1);
+        setPenColor(Color.BLACK);
+        Font font = new Font("SansSerif", Font.PLAIN, 25);
+        setFont(font);
+        text(location.x, location.y, value);
         }
     
-//    public void paintTree(BSTree tree){
-     public void paintTree(){
-        DSTreeAsArray treeAsArray = new DSTreeAsArray(new BSTree<Integer>());
-        
-        /**
-         * testing purposes
-         */
-        Object values[][] = new Object[2][3];
-        values[0][0] = null;
-        values[0][1] = 4;
-        values[0][2] = null;
-        
-        values[1][0] = 6;
-        values[1][1] = null;
-        values[1][2] = 8;
-        
-        treeAsArray.setValuesArray(values);
-        
-        ArrayLocation valuess[][] = new ArrayLocation[3][2];
-        
-        values[0][0] = null;
-        values[0][1] = new ArrayLocation(new Location[]{new Location(1,0), new Location(1,2)},null);
-        values[0][2] = null;
-        
-        values[1][0] = new ArrayLocation(null,new Location(0, 1));
-        values[1][1] = null;
-        values[1][2] = new ArrayLocation(null,new Location(0, 1));
-        
-        treeAsArray.setConnectionsArray(valuess);
-        /***********************************************************************
-         * final insertion value test 
-         ***********************************************************************/
-        if((treeAsArray.getWitdh() >= 16)){
-            setXscale(0, treeAsArray.getWitdh());
-            setYscale(0, treeAsArray.getHeight());
+    public void draw_node(BSTreeNode node, Location position, double offset) {
+        paintDot(position, RED_ICON,Integer.toString((int) node.getData()));
+        if (node.getLeft() != null) {
+            Location location = new Location(position.x - offset, position.y - 2);
+            paintLine(position, location);
+            paintDot(position, RED_ICON ,Integer.toString((int)node.getData())); // redraws circle over the line
+            draw_node(node.getLeft(), location, offset / 2);
         }
-        else
-        {
-            setXscale(0, 15);
-            setYscale(0, 15);
+        if (node.getRight() != null) {
+            Location location = new Location(position.x + offset, position.y - 2);
+            paintLine(position, location);
+            paintDot(position, RED_ICON, Integer.toString((int) node.getData())); // redraws circle over the line
+            draw_node(node.getRight(), location, offset / 2);
         }
-        int b = 0;
-        for (int i = 0; i < treeAsArray.getWitdh(); i++) {
-            for (int j = 0; j < treeAsArray.getHeight(); j++) {
-                if(treeAsArray.getValuesArray()[i][j] != null){
-                    paintDot(new Location(j, i), ORANGE_ICON, Integer.toString(b));
-                    b++;
-                }
-                    
-            }
-        }
-        
-//         paintDot(new Location(0,0), RED_ICON, "1");
-//         paintDot(new Location(1,0), DARK_BLUE_ICON, "2");
-//         paintDot(new Location(2,0), YELLOW_ICON, "3");
-        
-        
     }
+    
+    /**
+     * Although the StdDrawJPanel class is able to paint lines
+     * this implementation also change the color of the Pen
+     * @param position
+     * @param location 
+     */
+    public void paintLine(Location position, Location location) {
+        setPenColor(Color.BLACK);
+        setPenRadius();
+        line(position.getX(), position.getY(), location.getX(), location.getY());
+    }
+
+    /**
+     * This functions paint a tree structure in the JPanel  
+     * @param tree the tree to be painted
+     */
+     public void paintTree(BSTree tree){
+         draw_node(tree.getRoot(), new Location(getMaxX()/2.0, getMaxY() -1), WIDTH); //in this line we start 
+                                                                                      //the recursive call
+     }
 }

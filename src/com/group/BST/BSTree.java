@@ -11,7 +11,7 @@ package com.group.BST;
  */
 
 
-public class BSTree<T> implements Comparable<T>{
+public class BSTree<T>{
     
     public BSTreeNode root;
 
@@ -59,11 +59,7 @@ public class BSTree<T> implements Comparable<T>{
     
     public BSTreeNode getRoot(){
         return root;
-    }
-    @Override
-    public int compareTo(T t) {
-       return 0; 
-    }
+    } 
     
     
     public int getLevel(BSTreeNode n, int data, int level){

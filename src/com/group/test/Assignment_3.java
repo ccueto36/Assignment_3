@@ -1,12 +1,9 @@
 package com.group.test;
 
 
+import com.group.BST.BSTree;
 import com.group.graphics.TreeDrawingPanel;
-import com.group.Tools.Location;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -35,7 +32,16 @@ public class Assignment_3 {
             }
         });
         
-       drawingPanel.paintTree();
+        BSTree tree = new BSTree();
+
+        
+        for (int i = 0; i < 25; i++) {
+            tree.add((int) (Math.random() * 10));
+        }
+        
+        drawingPanel.setXscale(0,20);
+        drawingPanel.setYscale(0,20);
+        drawingPanel.paintTree(tree);
     }
 
         
