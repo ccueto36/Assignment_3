@@ -28,9 +28,11 @@ public class BSTreeNode {
         this.right = right;
     }
     
-    public Object getData()
-    {
-        return data;
-    }
+    public Object getData(){
+        return data; }
+    public BSTreeNode getLeft()  { 
+        return left; }
+    public BSTreeNode getRight() { 
+        return right; }
     
 }

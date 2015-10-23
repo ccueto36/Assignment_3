@@ -15,28 +15,31 @@ public class BSTree<T> implements Comparable<T>{
     
     public BSTreeNode root;
 
-    private BSTreeNode add(BSTreeNode n, int v)
+    private BSTreeNode add(BSTreeNode node, int value)
     {
-        if(n == null)
+        if(node == null)
         {
-             return new BSTreeNode(v);
+             return new BSTreeNode(value);
         }
 
-        if(n.data < v)
+        if(value < node.data)
         {
-          n.left = add(n.left, v);  
+          node.left = add(node.left, value);  
         }
 
-        else 
+        else if (value > node.data)
         {
-            n.right = add(n.right, v);
+            node.right = add(node.right, value);
         }
-        return n;
+        else {
+            // don't add a duplicate!!
+        }
+        return node;
     }
     
-    public void add(int v)
+    public void add(int value)
     {
-        this.root = add(root, v);
+        this.root = add(root, value);
     }
     
     public void print()
@@ -45,12 +48,12 @@ public class BSTree<T> implements Comparable<T>{
     }
     
     //in-order traversal
-    public void print(BSTreeNode n)
+    public void print(BSTreeNode node)
     {
-      if(n == null) return;
-      print(n.left);
-      System.out.println(n.data);
-      print(n.right);
+      if(node == null) return;
+      print(node.left);
+      System.out.println(node.data);
+      print(node.right);
       
     }
     
@@ -60,22 +63,22 @@ public class BSTree<T> implements Comparable<T>{
     }
     
     
-    public int getLevel(BSTreeNode n, int data, int level){
+    public int getLevel(BSTreeNode node, int data, int level){
         
-        if (n == null) return 0;
-        if (n.data == data) return level;
+        if (node == null) return 0;
+        if (node.data == data) return level;
         
-        int downlevel = getLevel(n.left, data, level++);
+        int downlevel = getLevel(node.left, data, level++);
         if(downlevel != 0) return downlevel;
         
-        downlevel = getLevel(n.right, data, level++);
+        downlevel = getLevel(node.right, data, level++);
         return downlevel;
     }
     
     
-    public int getLevel(BSTreeNode n, int data)
+    public int getLevel(BSTreeNode node, int data)
     {
-     return getLevel(n, data, 1);   
+     return getLevel(node, data, 1);   
     }
     
     public int getTreeWidth(){
