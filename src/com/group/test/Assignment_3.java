@@ -37,11 +37,17 @@ public class Assignment_3 {
         
        tree.add(50);
        
-         for (int i = 0; i < 100; i++) {
-            tree.add((int) (Math.random() * 100));
-            
-        }
+//         for (int i = 0; i < 17; i++) {
+//            tree.add((int) (Math.random() * 100));
+//            
+//        }
         
+       tree.add(25);
+       tree.add(15);
+       tree.add(30);
+       tree.add(75);
+       tree.add(65);
+       tree.add(85);
         drawingPanel.setXscale(0,30);
         drawingPanel.setYscale(0,30);
         drawingPanel.paintTree(tree);

@@ -121,23 +121,23 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      */
     private void paintDot(Location location, String icon, String value){        
          //if ((location.x >= getMaxX()) || (location.y >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
-        picture(location.getX(), location.getY(), icon ,1,1);
+        picture(location.getX() + 0.5, location.getY() + 0.5, icon ,1,1);
         setPenColor(Color.BLACK);
         Font font = new Font("SansSerif", Font.PLAIN, 25);
         setFont(font);
-        text(location.getX(), location.getY(), value);
+        text(location.getX() + 0.5, location.getY() + 0.5, value);
         }
     
     public void draw_node(BSTreeNode node, Location position, double offset) {
         paintDot(position, RED_ICON,Integer.toString((int) node.getData()));
         if (node.getLeft() != null) {
-            Location location = new Location(position.getX() - offset, position.getY() - 2);
+            Location location = new Location(position.getX() - offset, position.getY() + 2);
             paintLine(position, location);
             paintDot(position, RED_ICON ,Integer.toString((int)node.getData())); // redraws circle over the line
             draw_node(node.getLeft(), location, offset / 2);
         }
         if (node.getRight() != null) {
-            Location location = new Location(position.getX() + offset, position.getY() - 2);
+            Location location = new Location(position.getX() + offset, position.getY() + 2);
             paintLine(position, location);
             paintDot(position, RED_ICON, Integer.toString((int) node.getData())); // redraws circle over the line
             draw_node(node.getRight(), location, offset / 2);
@@ -153,7 +153,7 @@ public class TreeDrawingPanel extends StdDrawJPanel {
     public void paintLine(Location position, Location location) {
         setPenColor(Color.BLACK);
         setPenRadius();
-        line(position.getX(), position.getY(), location.getX(), location.getY());
+        line(position.getX() + 0.5, position.getY() + 0.5, location.getX() + 0.5, location.getY() + 0.5);
     }
 
     /**
@@ -161,7 +161,7 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @param tree the tree to be painted
      */
      public void paintTree(BSTree tree){
-         draw_node(tree.getRoot(), new Location(getMaxX()/2.0, getMaxY() -1),  4.0); //in this line we start 
+         draw_node(tree.getRoot(), new Location(getMaxX()/2.0, 0 ),  4.0); //in this line we start 
                                                                                       //the recursive call
      }
 }
