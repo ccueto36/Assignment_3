@@ -1,4 +1,4 @@
-
+package com.group.BST;
 	// Miguel Espinal
 public class BSTNode<E>
 {

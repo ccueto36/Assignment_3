@@ -28,7 +28,7 @@ public class DSTreeAsArray<T> {
     /**
      * 
      */
-    public DSTreeAsArray(BSTree<T> tree) {
+    public DSTreeAsArray(BST<Integer> tree) {
         selectedLocation = null; //No element selected
     }
 

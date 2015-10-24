@@ -1,8 +1,8 @@
 package com.group.graphics;
 
 
-import com.group.BST.BSTree;
-import com.group.BST.BSTreeNode;
+import com.group.BST.BST;
+import com.group.BST.BSTNode;
 import com.group.BST.DSTreeAsArray;
 import com.group.BST.DSTreeAsArray.*;
 import com.group.Tools.Location;
@@ -128,19 +128,19 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         text(location.getX() + 0.5, location.getY() + 0.5, value);
         }
     
-    public void draw_node(BSTreeNode node, Location position, double offset) {
-        paintDot(position, RED_ICON,Integer.toString((int) node.getData()));
-        if (node.getLeft() != null) {
+    public void draw_node(BSTNode node, Location position, double offset) {
+        paintDot(position, RED_ICON,Integer.toString((int) node.element));
+        if (node.left != null) {
             Location location = new Location(position.getX() - offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, RED_ICON ,Integer.toString((int)node.getData())); // redraws circle over the line
-            draw_node(node.getLeft(), location, offset / 2);
+            paintDot(position, RED_ICON ,Integer.toString((int)node.element)); // redraws circle over the line
+            draw_node(node.left, location, offset / 2);
         }
-        if (node.getRight() != null) {
+        if (node.right != null) {
             Location location = new Location(position.getX() + offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, RED_ICON, Integer.toString((int) node.getData())); // redraws circle over the line
-            draw_node(node.getRight(), location, offset / 2);
+            paintDot(position, RED_ICON, Integer.toString((int) node.element)); // redraws circle over the line
+            draw_node(node.right, location, offset / 2);
         }
     }
     
@@ -160,7 +160,7 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * This functions paint a tree structure in the JPanel  
      * @param tree the tree to be painted
      */
-     public void paintTree(BSTree tree){
+     public void paintTree(BST tree){
          draw_node(tree.getRoot(), new Location(getMaxX()/2.0, 0 ),  4.0); //in this line we start 
                                                                                       //the recursive call
      }
