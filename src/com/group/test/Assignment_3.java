@@ -1,13 +1,12 @@
 package com.group.test;
 
+
+import com.group.BST.BST;
 import com.group.graphics.TreeDrawingPanel;
-import com.group.Tools.Location;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
-import com.group.BST.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import javax.swing.SwingUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,64 +18,57 @@ import java.awt.Toolkit;
  * @author admin
  */
 public class Assignment_3 {
+
+    static JFrame frame;
+    static TreeDrawingPanel drawingPanel = new TreeDrawingPanel();;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TreeDrawingPanel stdDrawJPanel = new TreeDrawingPanel();
-        JFrame frame = new JFrame();
-
-        stdDrawJPanel.clear(Color.WHITE);
-
-        frame.setResizable(true);
-
-        frame.add(stdDrawJPanel, BorderLayout.CENTER);
-
-        //frame.setSize(1000, 1000);
-        frame.pack();
-        frame.setVisible(true);
-
-//        frame.setLayout(new GridBagLayout());
-//
-//        GridBagConstraints constrains = new GridBagConstraints();
-//        constrains.gridx = 0;
-//        constrains.gridy = 0;
-//
         
-        double screenWidth = 30.0;
-        double screenHeight = 30.0;
-        stdDrawJPanel.setXscale(0, screenWidth);
-        stdDrawJPanel.setYscale(0, screenHeight);
-        stdDrawJPanel.setSize(1000, 1000);
-
-        BSTree tree = new BSTree();
+        
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                init();
+            }
+        });
+        
+        BST tree = new BST();
 
         
-        for (int i = 0; i < 17; i++) {
-            tree.add((int) (Math.random() * 10));
+       tree.insert(50);
+       
+         for (int i = 0; i < 100; i++) {
+            tree.insert((int) (Math.random() * 100));
+            
         }
-        stdDrawJPanel.draw_node(tree.root, new Location(screenWidth / 2.0, screenHeight - 1.0), screenWidth / 4.0);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+//       tree.insert(25);
+//       tree.insert(15);
+//       tree.insert(30);
+//       tree.insert(75);
+//       tree.insert(65);
+//       tree.insert(85);
+       drawingPanel.clear(Color.BLUE); 
+        drawingPanel.setXscale(0,30);
+        drawingPanel.setYscale(0,30);
+        drawingPanel.paintTree(tree);
     }
-       //stdDrawJPanel.picture(5, 9, TreeDrawingPanel.BRIGHT_GREEN_ICON,0.9,0.9);
-    //stdDrawJPanel.picture(5.5, 5.5, TreeDrawingPanel.DARK_PURPLE_ICON,0.9,0.9);
-    //stdDrawJPanel.picture(6.5, 6.5, TreeDrawingPanel.LIGHT_GREEN_ICON ,0.9,0.9);
-    //stdDrawJPanel.setPenColor(Color.WHITE);
-    //stdDrawJPanel.text(5.5, 5.5, "25");
-    //stdDrawJPanel.setPenColor(Color.BLACK);
-    //stdDrawJPanel.setPenRadius();
-    //stdDrawJPanel.line(5.8,5.8, 6.2, 6.2);
 
-       //stdDrawJPanel.paintDot(new Location(10, 10), "5");
-    //stdDrawJPanel.paintDot(new Location(10, 19), "7");
-    //stdDrawJPanel.paintDot(new Location(6, 16), "8");
-//
-//        frame.add(stdDrawJPanel, constrains);
-//        frame.setVisible(true);
-//        frame.setSize(500, 500);
-    /**
-     * *************************************************************************
-     *
-     **************************************************************************
-     */
+        
+    protected static void init(){
+        frame = new JFrame();
+        
+        
+        
+        //Frame stuff
+        frame.setLayout(new BorderLayout());
+        frame.add(drawingPanel, BorderLayout.CENTER);
+        frame.setResizable(false);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        
+    }
 }
+
