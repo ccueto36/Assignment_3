@@ -4,6 +4,7 @@ package com.group.test;
 import com.group.BST.BST;
 import com.group.graphics.TreeDrawingPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -37,17 +38,18 @@ public class Assignment_3 {
         
        tree.insert(50);
        
-//         for (int i = 0; i < 17; i++) {
-//            tree.add((int) (Math.random() * 100));
-//            
-//        }
+         for (int i = 0; i < 100; i++) {
+            tree.insert((int) (Math.random() * 100));
+            
+        }
         
-       tree.insert(25);
-       tree.insert(15);
-       tree.insert(30);
-       tree.insert(75);
-       tree.insert(65);
-       tree.insert(85);
+//       tree.insert(25);
+//       tree.insert(15);
+//       tree.insert(30);
+//       tree.insert(75);
+//       tree.insert(65);
+//       tree.insert(85);
+       drawingPanel.clear(Color.BLUE); 
         drawingPanel.setXscale(0,30);
         drawingPanel.setYscale(0,30);
         drawingPanel.paintTree(tree);

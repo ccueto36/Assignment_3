@@ -66,7 +66,7 @@ public class DSTreeAsArray<T> {
      * array
      */
     public void setSelectedLocation(Location selectedLocation) {
-        this.selectedLocation = selectedLocation;
+        this.selectedLocation = selectedLocation; 
     }
     
     /**

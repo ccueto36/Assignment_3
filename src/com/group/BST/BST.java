@@ -1,4 +1,6 @@
 package com.group.BST;
+
+import java.util.NoSuchElementException;
 /**
  * 
  * @author Miguel Espinal
@@ -31,48 +33,48 @@ public class BST<E extends Comparable<E>>
 		return root;
 	}
 
-	// Miguel Espinal
-	// Insert a record into the tree.
-	// Records can be anything, but they must be Comparable
-	// e: The record to insert.
-	public void insert( E e )
+//	 Miguel Espinal
+//	 Insert a record into the tree.
+//       calls insethelp method with the given parameters         
+//	 Records can be anything, but they must be Comparable
+//	 e: The record to insert.
+        
+	public void insert( E element )
 	{
-		root = inserthelp(root, e);
+                root = insert(root, element);
 		nodecount++;
 	}
 
 	// Miguel Espinal
-	private BSTNode<E> inserthelp(BSTNode<E> root, E element)
+        // Fernando Serrano
+	private BSTNode<E> insert(BSTNode<E> node, E element)
 	{
-		if (root == null)
+		if (node == null)
 		{
 			//empty tree
 			return new BSTNode<E>(element);
 		}
-		
-		if (root.element.compareTo(element) == 0)
-		{
-			return null;	//elements are equal, no duplicates
-		}
-		else if(root.element.compareTo(element) > 0)
+	
+		else if(node.element.compareTo(element) > 0)
 		{
 			//the root is greater than the element we have
-			root.left = inserthelp(root.left, element);
+			node.left = insert(node.left, element);
 		}
-		else
+                else if(node.element.compareTo(element) < 0)
 			//the root is smaller
-			root.right = inserthelp(root.right, element);
+			node.right = insert(node.right, element);
 		
-		return root; //return the initial root
+		return node; //return the initial root
 	}
 
 	// Miguel Espinal
 	// Remove a record from the tree
+        // calls the removehelp method with the given parameters
 	// key: The key value of record to remove
 	// Returns the record removed, null if there is none.
 	public E remove( E key )
 	{
-		E temp = findhelp(root, key); // First find it
+		E temp = find(root, key); // First find it
 		
 		if ( temp != null )
 		{
@@ -84,6 +86,9 @@ public class BST<E extends Comparable<E>>
 	}
 	
 	// Miguel Espinal
+        /*
+        executes the remove method inside the tree
+        */
 	private BSTNode<E> removehelp(BSTNode<E> root, E element)
 	{
 		if(root == null)
@@ -113,7 +118,7 @@ public class BST<E extends Comparable<E>>
 			}
 			else //it has two children
 			{
-				BSTNode<E> temp = getmax(root.left);
+				BSTNode<E> temp = getMax(root.left);
 				root.element = temp.element;
 				root.left = deletemax(root.left);
 			}
@@ -123,15 +128,20 @@ public class BST<E extends Comparable<E>>
 	}
 	
 
-	// Miguel Espinal
-	// Return the record with key value k, null if none exists
-	// key: the key value to find
+	/* Miguel Espinal
+	   Return the record with key value k, null if none exists
+	   key: the key value to find
+           executes findhelp method
+        */
 	public E find( E key )
 	{
-		return findhelp(root, key);
+		return find(root, key);
 	}
-
-	private E findhelp( BSTNode<E> root, E key )
+        
+        /*
+        finds an element inside the tree
+        */
+	private E find( BSTNode<E> root, E key )
 	{
 		if ( root == null )
 		{
@@ -140,14 +150,14 @@ public class BST<E extends Comparable<E>>
 
 		if ( root.element.compareTo(key) > 0 )
 		{
-			return findhelp(root.left, key);
+			return find(root.left, key);
 		}
 		else if ( root.element.compareTo(key) == 0 )
 		{
 			return root.element;
 		}
 		else
-			return findhelp(root.right, key);
+			return find(root.right, key);
 
 	}
 	
@@ -163,26 +173,40 @@ public class BST<E extends Comparable<E>>
 		return root;
 	}
 	
+            public BSTNode getMax(){
+        if(root==null){
+            throw new NoSuchElementException();
+        }    
+        return getMax(root);
+    }
+        
 	// Miguel Espinal
-	public BSTNode<E> getmax(BSTNode<E> root)
+	public BSTNode<E> getMax(BSTNode<E> root)
 	{
 		if(root.right == null)
 		{
 			return root;
 		}
 		
-		return getmax(root.right);
+		return getMax(root.right);
 	}
 	
+        public BSTNode getMin(){
+            if (root == null){
+            throw new NoSuchElementException();
+        }
+        return getMin(root);
+    }
+        
 	// Miguel Espinal
-	public BSTNode<E> getmin(BSTNode<E> root)
+	public BSTNode<E> getMin(BSTNode<E> root)
 	{
 		if(root.left == null)
 		{
 			return root;
 		}
 		
-		return getmin(root.left);
+		return getMin(root.left);
 	}
 	
 	// Miguel Espinal
@@ -263,6 +287,21 @@ public class BST<E extends Comparable<E>>
 		postOrder(root.right);
 		System.out.print(root.element + " ");
 	}
+        /*
+        retruns level (int)
+        Fernando Serrano
+        */
+        public int getLevel(BSTNode node, E data, int level){
+        
+        if (node == null) return 0;
+        if (node.element == data) return level;
+        
+        int downlevel = getLevel(node.left, data, level++);
+        if(downlevel != 0) return downlevel;
+        
+        downlevel = getLevel(node.right, data, level++);
+        return downlevel;
+    }
 	
 	
 
