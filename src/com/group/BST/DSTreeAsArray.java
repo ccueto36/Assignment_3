@@ -16,7 +16,7 @@ import com.group.Tools.Location;
  * one containing the values and the other containing the connections in the Tree.
  * It also provides a "selectedLocation" property to identify what element its being
  * selected
- * @author Manuel Garcia    //adicto al array as I thought lol
+ * @author Manuel Garcia
  */
 
 public class DSTreeAsArray<T> {
