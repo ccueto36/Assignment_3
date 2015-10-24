@@ -23,12 +23,12 @@ import com.group.Tools.Location;
 public class DSTreeAsArray<T> {
     private T[][] valuesArray;
     private ArrayLocation[][] connectionsArray;
-    private ArrayLocation selectedLocation;
+    private Location selectedLocation;
 
     /**
      * 
      */
-    public DSTreeAsArray(BSTree<T> tree) {
+    public DSTreeAsArray(BST<Integer> tree) {
         selectedLocation = null; //No element selected
     }
 
@@ -56,7 +56,7 @@ public class DSTreeAsArray<T> {
      * @return the selected position. if null, means that no value has been 
      * selected
      */
-    public ArrayLocation getSelectedLocation() {
+    public Location getSelectedLocation() {
         return selectedLocation;
     }
 
@@ -65,8 +65,8 @@ public class DSTreeAsArray<T> {
      * @param selectedLocation sets the location of the selected value in the 
      * array
      */
-    public void setSelectedLocation(ArrayLocation selectedLocation) {
-        this.selectedLocation = selectedLocation;
+    public void setSelectedLocation(Location selectedLocation) {
+        this.selectedLocation = selectedLocation; 
     }
     
     /**
