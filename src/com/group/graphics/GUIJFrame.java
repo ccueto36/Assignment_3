@@ -16,6 +16,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -32,7 +36,8 @@ public class GUIJFrame extends JFrame {
     
     public static JPanel tutorialPanel = new JPanel();
     public static JPanel buttonPanel = new JPanel();
-
+    public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
+    
     JRadioButton jbtChoice1 = new JRadioButton("A.)") ;
     JRadioButton jbtChoice2 = new JRadioButton("B.)") ;
     JRadioButton jbtChoice3 = new JRadioButton("C.)") ;
@@ -44,8 +49,12 @@ public class GUIJFrame extends JFrame {
     JButton btNext = new JButton ("Next") ;
     JButton btSubmit = new JButton("Submit") ;
     
+    JMenuBar tutorialBar = new JMenuBar() ;
+    JMenu tutorialMenu = new JMenu("Menu") ;
+    JMenuItem aboutMenu = new JMenuItem("About") ;
+    JMenuItem Menu_Item_Exit = new JMenuItem("Exit") ;
 //    JTextArea tutorialText = new JTextArea("Dummy text") ;
-    public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
+    
 
     public GUIJFrame() {
         super();
@@ -212,9 +221,39 @@ public class GUIJFrame extends JFrame {
             }
         });
         
+        aboutMenu.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                 JOptionPane.showMessageDialog(null, "This tutorial was made for"
+                         + "COP 3530 and was created by:\n Manuel Garcia \n"
+                         + " Carlos Cuerto \n Fernando \n Miguel \n Carlos Martinez");
+            }
+        });
+        
+        Menu_Item_Exit.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                dispose();
+            }
+        });
+        
+        
+        
+        /***********************************************************************
+        * Building JMenuBar
+        ***********************************************************************/
+        tutorialBar.add(tutorialMenu) ;
+        tutorialBar.add(aboutMenu) ;
+
+        /***********************************************************************
+        *Building tutorialMenu
+        ***********************************************************************/
+        tutorialMenu.add(Menu_Item_Exit) ;
+        
         /***********************************************************************
          * Adding elements to the Frame
          ***********************************************************************/
+        setJMenuBar(tutorialBar) ;
         add(buttonPanel,gbc_buttonPanel);
         add(tutorialPanel, gbc_tutorialPanel);
         add(drawPanel, gbc_drawingJPanel);
