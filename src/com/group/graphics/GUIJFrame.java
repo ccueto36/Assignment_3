@@ -11,6 +11,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -232,6 +234,59 @@ public class GUIJFrame extends JFrame {
         gbc_Jrbtn_4.gridx = 4 ;
         gbc_Jrbtn_4.gridy = 1 ;
         buttonPanel.add(btNext, gbc_Jrbtn_4) ;
+        
+         /***********************************************************************
+        * Adding ActionListeners to buttons
+        ***********************************************************************/
+        jbtChoice1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("Choice 1 was clicked");
+            }
+        });
+        
+        jbtChoice2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("Choice 2 was clicked");
+            }
+        });
+        
+        jbtChoice3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("Choice 3 was clicked");
+            }
+        });
+        
+        jbtChoice4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("Choice 4 was clicked");
+            }
+        });
+        
+        btPrev.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("'Previous' button was clicked");
+            }
+        });
+        
+        btSubmit.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("'Submit' button was clicked");
+            }
+        });
+        
+        btNext.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //Action executed when button is pressed.
+                System.out.println("'Next' button was clicked");
+            }
+        });
+        
         /***********************************************************************
          * Adding elements to the Frame
          ***********************************************************************/
