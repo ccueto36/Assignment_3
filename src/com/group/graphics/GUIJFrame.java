@@ -13,14 +13,11 @@ import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -41,94 +38,14 @@ public class GUIJFrame extends JFrame {
     JRadioButton jbtChoice3 = new JRadioButton("C.)") ;
     JRadioButton jbtChoice4 = new JRadioButton("D.)") ;
     
+    ButtonGroup JrbtnGroup = new ButtonGroup() ;
+    
     JButton btPrev = new JButton("Prev") ;
     JButton btNext = new JButton ("Next") ;
     JButton btSubmit = new JButton("Submit") ;
-//    
+    
 //    JTextArea tutorialText = new JTextArea("Dummy text") ;
     public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
-
-//    GUILayout()
-//    {
-//        tutorialFrame.setSize(frameWidth, frameHeight);
-//        tutorialFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-//        tutorialFrame.setLocationRelativeTo(null);
-//        tutorialFrame.setResizable(false);
-//        tutorialFrame.setVisible(true);
-//        
-//        tutorialPanel.setLayout(new GridBagLayout()) ;
-//        buttonPanel.setLayout(new GridBagLayout()) ;
-//        
-//        tutorialText.setLineWrap(true);
-//        tutorialText.setWrapStyleWord(true);
-//        
-//        JScrollPane scroll = new JScrollPane(tutorialText) ;
-//        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-//
-//        //Sets up location of text field and drawPanel
-//        GridBagConstraints gbc = new GridBagConstraints() ;
-//        
-//        gbc.gridx = 1 ;
-//        gbc.gridy = 0 ;
-//        
-//        tutorialPanel.add(scroll, gbc) ;
-//        
-//        gbc.gridx = 0 ;
-//        gbc.gridy = 0 ;
-//        drawPanel.setCanvasSize(frameWidth * 2/3, frameHeight * 2/3);
-//        tutorialPanel.add(drawPanel, gbc) ;
-//        
-//        //Sets up location of buttons
-//        gbc.gridx = 0 ;
-//        gbc.gridy = 0 ;
-//        
-//        buttonPanel.add(jbtChoice1, gbc) ;
-//        
-//        gbc.gridx = 1 ;
-//        gbc.gridy = 0 ;
-//        
-//        buttonPanel.add(jbtChoice2, gbc) ;
-//        
-//        gbc.gridx = 2 ;
-//        gbc.gridy = 0 ;
-//        
-//        buttonPanel.add(jbtChoice3, gbc) ;
-//        
-//        gbc.gridx = 3 ;
-//        gbc.gridy = 0 ;
-//        
-//        buttonPanel.add(jbtChoice4, gbc) ;
-//        
-//        gbc.gridx = 0 ;
-//        gbc.gridy = 1 ;
-//        
-//        buttonPanel.add(btPrev, gbc) ;
-//        
-//        gbc.gridx = 2 ;
-//        gbc.gridy = 1 ;
-//        
-//        buttonPanel.add(btSubmit, gbc) ;
-//        
-//        gbc.gridx = 4 ;
-//        gbc.gridy = 1 ;
-//        
-//        buttonPanel.add(btNext, gbc) ;
-//        
-//        //Sets up panels in frame
-//        tutorialFrame.setLayout(new GridBagLayout());
-//        
-//        gbc.gridx = 0 ;
-//        gbc.gridy = 0 ;
-//               
-//        tutorialFrame.add(tutorialPanel, gbc) ;
-//        
-//        gbc.gridx = 0 ;
-//        gbc.gridy = 1 ;
-//        
-//        tutorialFrame.add(buttonPanel, gbc) ;
-//    }
-//       
-   
 
     public GUIJFrame() {
         super();
@@ -234,6 +151,14 @@ public class GUIJFrame extends JFrame {
         gbc_Jrbtn_4.gridx = 4 ;
         gbc_Jrbtn_4.gridy = 1 ;
         buttonPanel.add(btNext, gbc_Jrbtn_4) ;
+        
+        /***********************************************************************
+        * Puts radioButtons in a group
+        ***********************************************************************/
+        JrbtnGroup.add(jbtChoice1);
+        JrbtnGroup.add(jbtChoice2);
+        JrbtnGroup.add(jbtChoice3);
+        JrbtnGroup.add(jbtChoice4);
         
          /***********************************************************************
         * Adding ActionListeners to buttons
