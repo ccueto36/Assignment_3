@@ -226,7 +226,8 @@ public class GUIJFrame extends JFrame {
                 //Action executed when button is pressed.
                  JOptionPane.showMessageDialog(null, "This tutorial was made for"
                          + "COP 3530 and was created by:\n Manuel Garcia \n"
-                         + " Carlos Cuerto \n Fernando \n Miguel \n Carlos Martinez");
+                         + " Carlos Cuerto \n Fernando Serrano\n Miguel Espinal "
+                         + "\n Carlos Martinez");
             }
         });
         
