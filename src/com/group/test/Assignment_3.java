@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import com.group.graphics.GUIJFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +20,7 @@ import javax.swing.SwingUtilities;
  */
 public class Assignment_3 {
 
-    static JFrame frame;
+    static GUIJFrame frame;
     static TreeDrawingPanel drawingPanel = new TreeDrawingPanel();;
     /**
      * @param args the command line arguments
@@ -29,7 +30,10 @@ public class Assignment_3 {
         
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                init();
+                //init();
+                frame = new GUIJFrame();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
             }
         });
         
@@ -56,19 +60,19 @@ public class Assignment_3 {
     }
 
         
-    protected static void init(){
-        frame = new JFrame();
-        
-        
-        
-        //Frame stuff
-        frame.setLayout(new BorderLayout());
-        frame.add(drawingPanel, BorderLayout.CENTER);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        
-    }
+//    protected static void init(){
+//        frame = new JFrame();
+//        
+//        
+//        
+//        //Frame stuff
+//        frame.setLayout(new BorderLayout());
+//        frame.add(drawingPanel, BorderLayout.CENTER);
+//        frame.setResizable(false);
+//        frame.pack();
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setVisible(true);
+//        
+//    }
 }
 

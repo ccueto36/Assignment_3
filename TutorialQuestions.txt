@@ -31,10 +31,37 @@ Is the tree in Figure 1.1 (shown on the left) a Binary Search Tree? (***PRINOUT 
 
 ----Question # 3
 Determine which of the nodes in Fig 1.3 (shown on the left) is a leaf node? (***PRINOUT OF BST WITH LEAF NODES***)
-	A. 
-	B.
-	C.
-	D.
+	A. Node A
+	B. Node B
+	C. Node C
+	D. Node D
+	
+*They call the length of the path from the root of the tree to a node M is called the "depth" of Node M. Consequently, the "height" of a tree is depth + 1 of the deepest node in the tree.
+
+----Question # 4
+What is the depth of Node B in the tree in Fig 1.4 (shown on the left)? (***PRINTOUT OF BST WITH NODE B AS ONE OF THE NODES***)
+A. 4
+B. 3
+C. 1
+D. 2
+
+----Question # 5
+What is the height of the tree in Fig 1.4? (***KEEP SAME TREE AS QUESTION ABOVE***)
+A. 4
+B. 3
+C. 5
+D. 2
+
+*A tree is said to be "balanced" when it is not lopsided, meaning the deepest leaf node's depth is no greater than 1 more than the shallowest leaf node's depth. On the other hand, an "unbalanced" tree is lopsided, meaning some leaf nodes have high depths while other leaf nodes have low depths, the most extreme case of an unbalanced tree is a linked list.
+
+----Question # 6
+Is the tree shown on Fig 1.5 a balanced tree?
+A. True
+B. False
+
+
+
+
 
 
 
