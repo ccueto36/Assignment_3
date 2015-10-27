@@ -20,8 +20,8 @@ import com.group.Tools.Location;
  * @author Manuel Garcia
  */
 
-public class DSTreeAsArray<T> {
-    private T[][] valuesArray;
+public class DSTreeAsArray {
+    private int[][] valuesArray;
     private ArrayLocation[][] connectionsArray;
     private Location selectedLocation;
 
@@ -30,8 +30,15 @@ public class DSTreeAsArray<T> {
      */
     public DSTreeAsArray(BST<Integer> tree) {
         selectedLocation = null; //No element selected
+        
+      
+        
     }
 
+    private void initializeArrays(){
+        
+        
+    }
     /**
      * 
      * @return the array containing the connections between nodes. Each array
@@ -47,7 +54,7 @@ public class DSTreeAsArray<T> {
     * @return the array containing the tree's values in a array-like form.
     * if null, means that there is no value to be shown
     */
-    public T[][] getValuesArray() {
+    public int[][] getValuesArray() {
         return valuesArray;
     }
 
@@ -76,21 +83,6 @@ public class DSTreeAsArray<T> {
         this.selectedLocation = null;
     }
 
-    /**
-     * for testing purposes!!!
-     * @param connectionsArray 
-     */
-    public void setConnectionsArray(ArrayLocation[][] connectionsArray) {
-        this.connectionsArray = connectionsArray;
-    }
-
-    /**
-     * For testing purposes only!
-     * @param valuesArray 
-     */
-    public void setValuesArray(T[][] valuesArray) {
-        this.valuesArray = valuesArray;
-    }    
     
     public int getWitdh(){
         return valuesArray.length;
@@ -99,4 +91,5 @@ public class DSTreeAsArray<T> {
     public int getHeight(){
         return valuesArray[0].length;
     }
+    
 }
