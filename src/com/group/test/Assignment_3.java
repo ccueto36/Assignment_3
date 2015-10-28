@@ -33,6 +33,7 @@ public class Assignment_3 {
                 //init();
                 frame = new GUIJFrame();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
                 
             }
         });

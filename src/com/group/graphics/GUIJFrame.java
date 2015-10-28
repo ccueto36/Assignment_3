@@ -12,14 +12,17 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -42,10 +45,16 @@ public class GUIJFrame extends JFrame {
     JRadioButton jbtChoice3 = new JRadioButton("C.)") ;
     JRadioButton jbtChoice4 = new JRadioButton("D.)") ;
     
+    ButtonGroup Jrbtn_Group = new ButtonGroup() ;
+    
     JButton btPrev = new JButton("Prev") ;
     JButton btNext = new JButton ("Next") ;
     JButton btSubmit = new JButton("Submit") ;
-//    
+    
+    JMenuBar tutorialMenu = new JMenuBar() ;
+    JMenu menu = new JMenu("Menu") ;
+    JMenuItem about = new JMenuItem("About") ;
+    
 //    JTextArea tutorialText = new JTextArea("Dummy text") ;
     public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
 
@@ -169,6 +178,127 @@ public class GUIJFrame extends JFrame {
         gbc_Btn_Next.anchor =  GridBagConstraints.EAST;
         buttonPanel.add(btNext, gbc_Btn_Next) ;
         
+        /***********************************************************************
+        * Adding buttons to button group
+        ***********************************************************************/
+        Jrbtn_Group.add(jbtChoice1);
+        Jrbtn_Group.add(jbtChoice2);
+        Jrbtn_Group.add(jbtChoice3);
+        Jrbtn_Group.add(jbtChoice4);
+        
+        /***********************************************************************
+        * Building menuBar
+        ***********************************************************************/
+        tutorialMenu.add(menu) ;
+        tutorialMenu.add(about) ;
+        
+        /***********************************************************************
+        * Building menu 
+        ***********************************************************************/
+        JMenuItem exit = new JMenuItem("exit") ;
+        
+        menu.add(exit) ;
+        
+        /***********************************************************************
+        * Adding actionListeners to all buttons
+        ***********************************************************************/
+        jbtChoice1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Choice 1' was selected");
+            }
+        });
+        
+        jbtChoice2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Choice 2' was selected");
+            }
+        });
+        
+        jbtChoice3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Choice 3' was selected");
+            }
+        });
+        
+        jbtChoice4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Choice 4' was selected");
+            }
+        });
+        
+        btPrev.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Prev' was selected");
+            }
+        });
+        
+        btSubmit.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                if(jbtChoice1.isSelected())
+                {
+                    System.out.println("'Choice 1' was submitted as an answer");
+                }
+                else if(jbtChoice2.isSelected())
+                {
+                    System.out.println("'Choice 2' was submitted as an answer");
+                }
+                else if(jbtChoice3.isSelected())
+                {
+                    System.out.println("'Choice 3' was submitted as an answer");
+                }
+                else if(jbtChoice4.isSelected())
+                {
+                    System.out.println("'Choice 4' was submitted as an answer");
+                }
+                else
+                {
+                    System.out.println("Nothing was submitted");
+                }
+            }
+        });
+        
+        btNext.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("'Next' was selected");
+            }
+        });
+        
+        about.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+               JOptionPane.showMessageDialog(null, "This tutorial was made for"
+                       + " Professor Davis's COP 3530 class and was made by:"
+                       + "\n Manuel"
+                       + " Garcia\n Carlos Cuerto\n Fernando Serrano\n Miguel"
+                       + " Espinal\n Carlos Martinez", "About", 
+                       JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        
+        exit.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int exitResult = JOptionPane.showConfirmDialog(null, 
+                        "Would you really"
+                        + " like to close the tutorial?", "Exit", 
+                        JOptionPane.YES_NO_OPTION, 
+                        JOptionPane.WARNING_MESSAGE) ;
+                
+                if(exitResult == 0)
+                {
+                    dispose();
+                }
+                System.out.println(exitResult);
+            }
+        });
         
         /***********************************************************************
          * Adding elements to the Frame
@@ -176,6 +306,7 @@ public class GUIJFrame extends JFrame {
         add(buttonPanel,gbc_buttonPanel);
         add(tutorialPanel, gbc_tutorialPanel);
         add(drawPanel, gbc_drawingJPanel);
+        setJMenuBar(tutorialMenu);
     }    
 
 }
