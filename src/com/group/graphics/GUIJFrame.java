@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
@@ -54,6 +55,7 @@ public class GUIJFrame extends JFrame {
     
     JMenuBar tutorialMenu = new JMenuBar() ;
     JMenu menu = new JMenu("Menu") ;
+    JMenu help = new JMenu("Help") ;
     JMenuItem about = new JMenuItem("About") ;
     
     JTextArea tutorialText = new JTextArea("Dummy text") ;
@@ -126,16 +128,23 @@ public class GUIJFrame extends JFrame {
         //Tutorial frame location
         gbc_tutorialPanel.gridx = 1;
         gbc_tutorialPanel.gridy = 0;
-        
         tutorialText.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
-        //tutorialPanel.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
+        
         
         //ButtonJPanel Location
         gbc_buttonPanel.gridx = 0;
         gbc_buttonPanel.gridy = 1;
         gbc_buttonPanel.gridwidth = 2;
         buttonPanel.setPreferredSize(new Dimension(frameWidth, frameHeight * 1 / 3));
+        /***********************************************************************
+        * giving textArea ScrollBar and lineWrap
+        ***********************************************************************/
+        JScrollPane scroll = new JScrollPane(tutorialText) ;
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setPreferredSize(new Dimension(frameWidth * 49/100 , frameHeight * 67/100));
         
+        tutorialText.setLineWrap(true);
+        tutorialText.setWrapStyleWord(true);
         /***********************************************************************
          * Adding elements to the Bottom Panel
          ***********************************************************************/
@@ -193,14 +202,14 @@ public class GUIJFrame extends JFrame {
         * Building menuBar
         ***********************************************************************/
         tutorialMenu.add(menu) ;
-        tutorialMenu.add(about) ;
+        tutorialMenu.add(help) ;
         
         /***********************************************************************
         * Building menu 
         ***********************************************************************/
         JMenuItem exit = new JMenuItem("exit") ;
-        
         menu.add(exit) ;
+        help.add(about) ;
         
         /***********************************************************************
         * Adding actionListeners to all buttons
@@ -306,8 +315,7 @@ public class GUIJFrame extends JFrame {
          * Adding elements to the Frame
          ***********************************************************************/
         add(buttonPanel,gbc_buttonPanel);
-       // add(tutorialPanel, gbc_tutorialPanel);
-        add(tutorialText, gbc_tutorialPanel) ;
+        add(scroll, gbc_tutorialPanel) ;
         add(drawPanel, gbc_drawingJPanel);
         setJMenuBar(tutorialMenu);
     }    
