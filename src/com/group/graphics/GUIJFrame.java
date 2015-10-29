@@ -23,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -55,7 +56,7 @@ public class GUIJFrame extends JFrame {
     JMenu menu = new JMenu("Menu") ;
     JMenuItem about = new JMenuItem("About") ;
     
-//    JTextArea tutorialText = new JTextArea("Dummy text") ;
+    JTextArea tutorialText = new JTextArea("Dummy text") ;
     public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
 
    
@@ -125,7 +126,9 @@ public class GUIJFrame extends JFrame {
         //Tutorial frame location
         gbc_tutorialPanel.gridx = 1;
         gbc_tutorialPanel.gridy = 0;
-        tutorialPanel.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
+        
+        tutorialText.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
+        //tutorialPanel.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
         
         //ButtonJPanel Location
         gbc_buttonPanel.gridx = 0;
@@ -296,7 +299,6 @@ public class GUIJFrame extends JFrame {
                 {
                     dispose();
                 }
-                System.out.println(exitResult);
             }
         });
         
@@ -304,7 +306,8 @@ public class GUIJFrame extends JFrame {
          * Adding elements to the Frame
          ***********************************************************************/
         add(buttonPanel,gbc_buttonPanel);
-        add(tutorialPanel, gbc_tutorialPanel);
+       // add(tutorialPanel, gbc_tutorialPanel);
+        add(tutorialText, gbc_tutorialPanel) ;
         add(drawPanel, gbc_drawingJPanel);
         setJMenuBar(tutorialMenu);
     }    
