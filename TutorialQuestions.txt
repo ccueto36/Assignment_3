@@ -52,12 +52,39 @@ B. 3
 C. 5
 D. 2
 
+*Unlike Linked List data structures, Trees cannot be traversed in a regular fashion. Tree traversals are usually most efficient through the use of recursion. There are three types of recursion traversals which trees use most, depending on the situation. There are in-order traveral, pre-order traversal, and post-order traversal. 
+*In-order traversal first traverses the left subtree by recursively calling the in-order function, then displays the data of the root element, and finally traverses the right subtree by recursively calling the in-order function again.
+*Pre-order traversal first displays the data, then traverses the left subtree and finally traverses the right subtree. 
+*Post-order traversal traverses the left subtree, traverses the right subtree, and finally prints out the data.
+
+---Question # 6
+Which of the Java code snippets to the left on Fig 1.5 make use of the in-order tree traversal technique?
+(****Answer choices will contain small Java code for each type of traversal, make one of them a linked list traversal and the correct answer****)
+A.
+B.
+C.
+D.
+
 *A tree is said to be "balanced" when it is not lopsided, meaning the deepest leaf node's depth is no greater than 1 more than the shallowest leaf node's depth. On the other hand, an "unbalanced" tree is lopsided, meaning some leaf nodes have high depths while other leaf nodes have low depths, the most extreme case of an unbalanced tree is a linked list.
 
-----Question # 6
-Is the tree shown on Fig 1.5 a balanced tree?
+----Question # 7
+Is the tree shown on Fig 1.6 a balanced tree?
 A. True
 B. False
+
+*When a tree is unbalanced, its traversal worst case scenario becomes O(n) complexity. However, when the tree is balanced, the worst case scenario becomes an efficient O(log n) complexity. In order to keep trees balanced after every insertion or  deletion, we use AVL trees to perform this. AVL trees use "rotations" in order to keep themselves balanced after every tree update. If the level of a subtree is more than 1 on the left than on the right, we perform a left rotation to balance the tree. Consequently, we perform a right rotation if the level of the subtree is more than 1 on the right node. When rotating the tree, we switch the positions of the parent and the child nodes and keep the search order of the tree. 
+(*****SHOW AN UNBALANCED TREE AND THEN AFTERWARDS A TREE THAT HAS BEEN ROTATED TO BALANCE IT OUT****)
+
+----Question # 8
+What is the balanced version of the unbalanced tree to the left in Fig 1.7?
+(**SHOW DIFFERENT TREES AND A CORRECT VERSION**)
+A.
+B.
+C.
+D.
+
+
+
 
 
 
