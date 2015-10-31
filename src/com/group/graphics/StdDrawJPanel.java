@@ -238,8 +238,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
      */
     public void setCanvasSize(int canvasWidth, int canvasHeight) {
         if (width <= 0 || height <= 0) throw new IllegalArgumentException("width and height must be positive");
-        width = canvasWidth;
-        height = canvasHeight;
+        width = canvasWidth - 6; //to make it fit the Jpanel
+        height = canvasHeight - 10;
         init();
     }
     

@@ -14,6 +14,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.border.EtchedBorder;
 
 /**
  *
@@ -117,17 +119,21 @@ public class GUIJFrame extends JFrame {
 
         drawPanel.setPenColor(Color.BLACK);
         drawPanel.line(0, 0, 1, 1);
+        drawPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+        drawPanel.setPreferredSize(new Dimension(frameWidth * 5/8, frameHeight * 2 / 3));
         drawPanel.setCanvasSize(frameWidth * 5/8, frameHeight * 2 / 3);
 
         //Tutorial frame location
         gbc_tutorialPanel.gridx = 1;
         gbc_tutorialPanel.gridy = 0;
+        tutorialPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         tutorialPanel.setPreferredSize(new Dimension(frameWidth * 3/8, frameHeight * 2 / 3));
         
         //ButtonJPanel Location
         gbc_buttonPanel.gridx = 0;
         gbc_buttonPanel.gridy = 1;
         gbc_buttonPanel.gridwidth = 2;
+        buttonPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         buttonPanel.setPreferredSize(new Dimension(frameWidth, frameHeight * 1 / 3));
         
         /***********************************************************************
@@ -137,6 +143,7 @@ public class GUIJFrame extends JFrame {
         gbc_Jrbtn_1.gridx = 0;
         gbc_Jrbtn_1.gridy = 0;
         gbc_Jrbtn_1.weightx = 0.05;
+        gbc_Jrbtn_1.insets = new Insets(0,10,0,0);
         gbc_Jrbtn_1.anchor = GridBagConstraints.WEST;
         buttonPanel.add(jbtChoice1,gbc_Jrbtn_1);
         
@@ -160,7 +167,7 @@ public class GUIJFrame extends JFrame {
         
         gbc_Btn_Prev.gridx = 0 ;
         gbc_Btn_Prev.gridy = 1 ;
-        gbc_Btn_Prev.insets = new Insets(10,0,0,0);
+        gbc_Btn_Prev.insets = new Insets(10,10,0,0);
         gbc_Btn_Prev.anchor = GridBagConstraints.WEST;
         buttonPanel.add(btPrev, gbc_Btn_Prev) ;
         
@@ -171,7 +178,7 @@ public class GUIJFrame extends JFrame {
         
         gbc_Btn_Next.gridx = 4 ;
         gbc_Btn_Next.gridy = 1 ;
-        gbc_Btn_Next.insets = new Insets(10,0,0,0);
+        gbc_Btn_Next.insets = new Insets(10,0,0,10);
         gbc_Btn_Next.anchor = GridBagConstraints.EAST;
         buttonPanel.add(btNext, gbc_Btn_Next) ;
         
