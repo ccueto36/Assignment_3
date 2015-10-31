@@ -141,7 +141,7 @@ public class GUIJFrame extends JFrame {
         ***********************************************************************/
         JScrollPane scroll = new JScrollPane(tutorialText) ;
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scroll.setPreferredSize(new Dimension(frameWidth * 49/100 , frameHeight * 67/100));
+        scroll.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2/3));
         
         tutorialText.setLineWrap(true);
         tutorialText.setWrapStyleWord(true);
