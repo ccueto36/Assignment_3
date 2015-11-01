@@ -59,29 +59,51 @@ D. 2
 
 ---Question # 6
 Which of the Java code snippets to the left on Fig 1.5 make use of the in-order tree traversal technique?
-(****Answer choices will contain small Java code for each type of traversal, make one of them a linked list traversal and the correct answer****)
+(****Answer choices will contain small Java code for each type of traversal, make two of them pre-order traversal, the other post-order traversal, and make one of them a linked list traversal and the other one the correct answer(in-order)****)
 A.
 B.
 C.
 D.
 
-*A tree is said to be "balanced" when it is not lopsided, meaning the deepest leaf node's depth is no greater than 1 more than the shallowest leaf node's depth. On the other hand, an "unbalanced" tree is lopsided, meaning some leaf nodes have high depths while other leaf nodes have low depths, the most extreme case of an unbalanced tree is a linked list.
+*When it comes to removing a specific node within a tree, three cases are to be considered. The first case, which is when the node being removed has no children of its own, is quite simple. In this case we will just set the parent of that node to set to null and be done with it. The second case, when the node being removed has one child, simply connects the parent of the node being removed to the child of that node. On the third case, things get a little bit more complex, in this case the node being removed contains two children nodes. We must follow these steps:
+*find a minimum value in the right subtree
+*replace value of the node to be removed with found minimum. Now, right subtree contains a duplicate!
+*apply remove to the right subtree to remove a duplicate.
 
 ----Question # 7
-Is the tree shown on Fig 1.6 a balanced tree?
+Which of the removal cases will need to be utilized to remove Node with value 47 on the tree shown on the left?
+(***DRAW A TREE WITH NODE WITH VALUE OF 47 THAT HAS TWO CHILDREN***)
+A. Case 3: find min value, replace node with min, remove duplicate
+B. Case 2: Link its parent to its child
+C. Case 1: Set parent node to null
+D. Node 47 cannot be removed
+
+*A tree is said to be "balanced" when it is not lopsided, meaning the deepest leaf node's depth is no greater than 1 more than the shallowest leaf node's depth. On the other hand, an "unbalanced" tree is lopsided, meaning some leaf nodes have high depths while other leaf nodes have low depths, the most extreme case of an unbalanced tree is a linked list.
+(***SHOW A BALANCED TREE AND AN UNBALANCED TREE***)
+----Question # 8
+Is the tree shown on Fig 1.6 a balanced tree?(***DRAW A SIMPLE BALANCED TREE TO THE RIGHT***)
 A. True
 B. False
 
 *When a tree is unbalanced, its traversal worst case scenario becomes O(n) complexity. However, when the tree is balanced, the worst case scenario becomes an efficient O(log n) complexity. In order to keep trees balanced after every insertion or  deletion, we use AVL trees to perform this. AVL trees use "rotations" in order to keep themselves balanced after every tree update. If the level of a subtree is more than 1 on the left than on the right, we perform a left rotation to balance the tree. Consequently, we perform a right rotation if the level of the subtree is more than 1 on the right node. When rotating the tree, we switch the positions of the parent and the child nodes and keep the search order of the tree. 
 (*****SHOW AN UNBALANCED TREE AND THEN AFTERWARDS A TREE THAT HAS BEEN ROTATED TO BALANCE IT OUT****)
 
-----Question # 8
+----Question # 9
 What is the balanced version of the unbalanced tree to the left in Fig 1.7?
 (**SHOW DIFFERENT TREES AND A CORRECT VERSION**)
 A.
 B.
 C.
 D.
+
+*Sometimes a single left rotation is not sufficient to balance an unbalanced tree. After performing a right or left rotation, we are sometimes back in the same spot, with the tree unbalanced. The answer is that this is a result of the right subtree having a negative balance. In other words, because the right subtree was left heavy, our rotation was not sufficient. In this case, we will need to perform a "double rotation". We will perform a right rotation on the right subtree. We are not rotating on our current root. We are rotating on our right child. Think of our right subtree, isolated from our main tree, and perform a right rotation on it. 
+(***SHOW THE CONCEPT OF DOUBLE ROTATION WITH TWO TREES, UNBALANCED AND BALANCED THROUGH THE USE OF DOUBLE ROTATION, this link has a good image: http://www.cise.ufl.edu/~nemo/cop3530/AVL-Tree-Rotations.pdf****)
+
+----Question # 10
+Does the tree to the left in FIg 1.8 require the use of a double rotation balancing technique?(***DRAW AN UNBALANCED TREE THAT REQUIRES DOUBLE ROTATION, FYI: THE REASON FOR THIS TO BE TRUE/FALSE IS EASIER TO DRAW JUST ONE TREE THAN 4 TREE CHOICES***)
+A. False
+B. True
+
 
 
 
