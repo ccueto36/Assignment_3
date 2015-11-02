@@ -45,6 +45,7 @@ public class GUIJFrame extends JFrame {
     int frameHeight = (int) screenSize.getHeight() * 2 / 3;
     int answerChoice = Answer.NONE;
     int attemptCount = 0 ;
+    int overallCount = 0 ;
     
     public static JPanel textPanel = new JPanel();
     public static JPanel buttonPanel = new JPanel();
@@ -272,6 +273,7 @@ public class GUIJFrame extends JFrame {
         btnPrev.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 loadSlide(currentNode.getPrevious());
+                attemptCount = 0;
                 System.out.println("'Previous' button was clicked");
             }
         });
@@ -280,28 +282,55 @@ public class GUIJFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
                 System.out.println("'Submit' button was clicked");
-                if(jbtChoice1.isSelected())
+                if(attemptCount == 2 && answerChoice != currentNode.getData().getAnswer())
                 {
-                    if(answerChoice == currentNode.getData().getAnswer())
+                    String output = "" ;
+                    if(currentNode.getData().getAnswer() == Answer.A )
                     {
-                        JOptionPane.showMessageDialog(null, "Correct!");
-                        
+                        output = "A" ;
                     }
-                    else
+                    else if(currentNode.getData().getAnswer() == Answer.B )
                     {
-                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        output = "B" ;
                     }
+                    else if(currentNode.getData().getAnswer() == Answer.C )
+                    {
+                        output = "C" ;
+                    }
+                    else if(currentNode.getData().getAnswer() == Answer.D )
+                    {
+                        output = "D" ;
+                    }
+                    JOptionPane.showMessageDialog(null, "Sorry, you have ran out"
+                            + "of attempts the answer is: " + output );
                 }
-                if(jbtChoice2.isSelected()) 
+                else if(jbtChoice1.isSelected())
                 {
                     if(answerChoice == currentNode.getData().getAnswer())
                     {
                         JOptionPane.showMessageDialog(null, "Correct!");
-                        
+                        attemptCount = 0;
                     }
                     else
                     {
                         JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        attemptCount++ ;
+                        overallCount++ ;
+                    }
+                    
+                }
+                else if(jbtChoice2.isSelected()) 
+                {
+                    if(answerChoice == currentNode.getData().getAnswer())
+                    {
+                        JOptionPane.showMessageDialog(null, "Correct!");
+                        attemptCount = 0;
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        attemptCount++ ;
+                        overallCount++ ;
                     }
                 }
                 else if(jbtChoice3.isSelected())
@@ -309,11 +338,13 @@ public class GUIJFrame extends JFrame {
                     if(answerChoice == currentNode.getData().getAnswer())
                     {
                         JOptionPane.showMessageDialog(null, "Correct!");
-                        
+                        attemptCount = 0;
                     }
                     else
                     {
                         JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        attemptCount++ ;
+                        overallCount++ ;
                     }
                 }
                 else if(jbtChoice4.isSelected())
@@ -321,12 +352,18 @@ public class GUIJFrame extends JFrame {
                     if(answerChoice == currentNode.getData().getAnswer())
                     {
                         JOptionPane.showMessageDialog(null, "Correct!");
-                        
+                        attemptCount = 0;
                     }
                     else
                     {
                         JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        attemptCount++ ;
+                        overallCount++ ;
                     }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Please select an answer");
                 }
             }
         });
@@ -335,6 +372,7 @@ public class GUIJFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 
                 loadSlide(currentNode.getNext());
+                attemptCount = 0;
                 System.out.println("'Next' button was clicked");
             }
         });
