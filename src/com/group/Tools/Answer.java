@@ -9,6 +9,10 @@ package com.group.Tools;
  *
  * @author admin
  */
-public class Answer {
 public interface Answer {
+    final static int A = 0;
+    final static int B = 1;
+    final static int C = 2;
+    final static int D = 3;
+    final static int NONE = -1;
 }
