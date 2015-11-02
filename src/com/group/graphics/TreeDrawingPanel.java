@@ -128,19 +128,19 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         text(location.getX() + 0.5, location.getY() + 0.5, value);
         }
     
-    public void draw_node(BSTNode node, Location position, double offset) {
-        paintDot(position, LIGHT_GREEN_ICON,Integer.toString((int) node.element));
+    public void draw_node(BSTNode node,String color, Location position, double offset) {
+        paintDot(position, color,Integer.toString((int) node.element));
         if (node.left != null) {
             Location location = new Location(position.getX() - offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, LIGHT_GREEN_ICON ,Integer.toString((int)node.element)); // redraws circle over the line
-            draw_node(node.left, location, offset / 2);
+            paintDot(position, color ,Integer.toString((int)node.element)); // redraws circle over the line
+            draw_node(node.left,color, location, offset / 2);
         }
         if (node.right != null) {
             Location location = new Location(position.getX() + offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, LIGHT_GREEN_ICON, Integer.toString((int) node.element)); // redraws circle over the line
-            draw_node(node.right, location, offset / 2);
+            paintDot(position, color, Integer.toString((int) node.element)); // redraws circle over the line
+            draw_node(node.right,color, location, offset / 2);
         }
     }
     
@@ -161,7 +161,31 @@ public class TreeDrawingPanel extends StdDrawJPanel {
      * @param tree the tree to be painted
      */
      public void paintTree(BST tree){
-         draw_node(tree.getRoot(), new Location(getMaxX()/2.0, 0 ),  4.0); //in this line we start 
+         draw_node(tree.getRoot(), randomDot(), new Location(getMaxX()/2.0, 0 ),  4.0); //in this line we start 
                                                                                       //the recursive call
+     }
+     
+     public String randomDot(){
+         int number = (int)(Math.random() * 10);
+         
+         switch(number){
+            case 0:
+                return BRIGHT_GREEN_ICON;
+            case 1:
+                return DARK_BLUE_ICON;
+            case 2:
+                return DARK_PURPLE_ICON;
+            case 3:
+               return LIGHT_BLUE_ICON;
+            case 4:
+               return LIGHT_GREEN_ICON;
+            case 5:
+                return ORANGE_ICON;
+            case 6:
+                return YELLOW_ICON;
+            default:
+                return RED_ICON;
+         }
+        
      }
 }
