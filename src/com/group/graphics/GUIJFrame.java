@@ -128,8 +128,6 @@ public class GUIJFrame extends JFrame {
         //Tutorial frame location
         gbc_tutorialPanel.gridx = 1;
         gbc_tutorialPanel.gridy = 0;
-        tutorialText.setPreferredSize(new Dimension(frameWidth * 1/2 , frameHeight * 2 / 3));
-        
         
         //ButtonJPanel Location
         gbc_buttonPanel.gridx = 0;
