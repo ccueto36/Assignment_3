@@ -22,7 +22,7 @@ public class TreeTraversal
 {
 
 	/**
-	 * In order traversal.
+	 * InOrder traversal.
 	 * 
 	 * Traverse the left subtree, visit the root, then traverse the right
 	 * subtree.
@@ -36,7 +36,7 @@ public class TreeTraversal
 	}
 
 	/**
-	 * Pre order traversal.
+	 * PreOrder traversal.
 	 * 
 	 * Visit the root, traverse the left subtree, then traverse the right
 	 * subtree.
@@ -64,7 +64,7 @@ public class TreeTraversal
 	}
 
 	/**
-	 * In order helper method.
+	 * InOrder helper method.
 	 * 
 	 * @param root
 	 *            the root of the tree to be traversed.
@@ -80,7 +80,7 @@ public class TreeTraversal
 	}
 
 	/**
-	 * Pre order helper method.
+	 * PreOrder helper method.
 	 * 
 	 * @param root
 	 *            the root of the tree to be traversed.

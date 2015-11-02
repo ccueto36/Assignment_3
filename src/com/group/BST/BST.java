@@ -12,13 +12,17 @@ package com.group.BST;
 /**
  * A generic Binary Search Tree class.
  * 
- * This class extends comparable to be able to make key values
- * any type, since the method compareTo can be override for Objects
- * it makes it simple to add anything to this tree. The class is extended to add
- * AVL Tree's insertions and deletions.
+ * This class extends comparable to be able to make key values any type, since
+ * the method compareTo can be override for Objects it makes it simple to add
+ * anything to this tree. The class is extended to add AVL Tree's insertions
+ * and deletions.
  * 
  * @author Miguel Espinal
  * @author Fernando Serrano
+ * 
+ * @param <E>
+ *            Generic parameter so the node accepts any type of data.
+ *            The data must be comparable.
  */
 public class BST<E extends Comparable<E>>
 {
@@ -73,17 +77,18 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Helper method for BST insert.
 	 * 
+	 * Time Complexity: O(n). The cost of inserting a record is the depth of
+	 * the node inserted. In the worst case it can take the full height of the
+	 * tree thus O(n).
+	 * 
 	 * @param root
 	 *            the node to be inserted.
+	 * 
 	 * @param element
 	 *            the data value of the record to insert.
+	 * 
 	 * @return the inserted BST Node to the insert method.
 	 * 
-	 *         Time Complexity: O(n). The cost of inserting a record is the
-	 *         depth
-	 *         of the node inserted. In the worst case it can take the full
-	 *         height
-	 *         of the tree thus O(n).
 	 */
 	private BSTNode<E> inserthelp( BSTNode<E> root, E element )
 	{
@@ -120,17 +125,17 @@ public class BST<E extends Comparable<E>>
 	}
 
 	/**
-	 * Helper method for BST remove.
+	 * Delete a record of the tree.
+	 * 
+	 * Time Complexity: O(n). In the worst case a deletion can take the
+	 * full height of a tree, thus O(n). It depends on the depth of the
+	 * node to be removed.
 	 * 
 	 * @param key
 	 *            the value of the record to remove.
+	 * 
 	 * @return the record removed, null if there is none.
 	 * 
-	 *         Time Complexity: O(n). In the worst case a deletion can take the
-	 *         full
-	 *         height of a tree, thus O(n). It depends on the depth of the node
-	 *         to
-	 *         be removed.
 	 */
 	public E remove( E key )
 	{
@@ -149,15 +154,15 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Helper method for BST remove.
 	 * 
+	 * Time Complexity: O(n). In the worst case a deletion can take the
+	 * full height of a tree, thus O(n). It depends on the depth of the
+	 * node to be removed.
+	 * 
 	 * @param key
 	 *            the value of the record to remove.
+     *
 	 * @return the record removed, null if there is none.
 	 * 
-	 *         Time Complexity: O(n). In the worst case a deletion can take the
-	 *         full
-	 *         height of a tree, thus O(n). It depends on the depth of the node
-	 *         to
-	 *         be removed.
 	 */
 	private BSTNode<E> removehelp( BSTNode<E> root, E element )
 	{
@@ -194,7 +199,7 @@ public class BST<E extends Comparable<E>>
 			}
 			else // it has two children
 			{
-				// temporary node with the greates value in the left subtree
+				// temporary node with the greatest value in the left subtree
 				BSTNode<E> temp = getmax(root.left);
 				// set the root value to what was returned by getmax
 				root.element = temp.element;
@@ -211,15 +216,15 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Returns the value of the record searched.
 	 * 
+	 * Time Complexity: O(n). In the worst case a deletion can take the
+	 * full height of a tree, thus O(n). It depends on the depth of the
+	 * node to be removed.
+	 * 
 	 * @param key
 	 *            the value to be search for.
+	 * 
 	 * @return the value searched
 	 * 
-	 *         Time Complexity: O(n). In the worst case a deletion can take the
-	 *         full
-	 *         height of a tree, thus O(n). It depends on the depth of the node
-	 *         to
-	 *         be removed.
 	 */
 	public E find( E key )
 	{
@@ -228,6 +233,10 @@ public class BST<E extends Comparable<E>>
 
 	/**
 	 * Helper method for find.
+	 *
+	 * Time Complexity: O(n). In the worst case a deletion can take the
+	 * full height of a tree, thus O(n). It depends on the depth of
+	 * the node to be removed.
 	 * 
 	 * @param key
 	 *            the value to be search for.
@@ -237,9 +246,6 @@ public class BST<E extends Comparable<E>>
 	 * 
 	 * @return the value searched
 	 * 
-	 *         Time Complexity: O(n). In the worst case a deletion can take the
-	 *         full height of a tree, thus O(n). It depends on the depth of
-	 *         the node to be removed.
 	 */
 	private E findhelp( BSTNode<E> root, E key )
 	{
@@ -276,6 +282,7 @@ public class BST<E extends Comparable<E>>
 	 * 
 	 * @param root
 	 *            the root to delete the maximum value.
+	 * 
 	 * @return a pointer to the new root
 	 * 
 	 */
@@ -296,11 +303,13 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Gets the maximum value in the tree
 	 * 
+	 * Time Complexity: O(log n). Checks half of the tree for the max.
+	 * 
 	 * @param root
 	 *            the root of the tree in which to find the max
+	 * 
 	 * @return the maximum value of the tree
 	 * 
-	 *         Time Complexity: O(log n). Checks half of the tree for the max.
 	 */
 	public BSTNode<E> getmax( BSTNode<E> root )
 	{
@@ -317,11 +326,13 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Gets the minimum value in the tree
 	 * 
+	 * Time Complexity: O(log n). Checks half of the tree for the min.
+	 * 
 	 * @param root
 	 *            the root of the tree in which to find the min
+	 * 
 	 * @return the minimum value of the tree
 	 * 
-	 *         Time Complexity: O(log n). Checks half of the tree for the min.
 	 */
 	public BSTNode<E> getmin( BSTNode<E> root )
 	{
@@ -348,11 +359,13 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Helper method of height.
 	 * 
+	 * Time Complexity: O(n). Checks the full tree for heights.
+	 * 
 	 * @param root
 	 *            the tree of which the height will be calculated.
+	 * 
 	 * @return the height value
 	 * 
-	 *         Time Complexity: O(n). Checks the full tree for heights.
 	 */
 	private int height( BSTNode<E> root )
 	{
@@ -371,13 +384,14 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * If the tree is height balance returns true.
 	 * 
+	 * Time Complexity: O(n^2). Checks the tree twice for the heights of
+	 * each side.
+	 * 
 	 * @param root
 	 *            the root of the tree
+	 * 
 	 * @return true if the tree is height balance, false otherwise
 	 * 
-	 *         Time Complexity: O(n^2). Checks the tree twice for the heights of
-	 *         each
-	 *         side.
 	 */
 	public boolean isBalanced( BSTNode<E> root )
 	{
@@ -395,7 +409,8 @@ public class BST<E extends Comparable<E>>
 
 		// if the difference between the left and right height is less than one
 		// and the left and right subtrees are balanced then return true
-		if ( Math.abs(leftHeight - rightHeight) <= 1 && isBalanced(root.left) && isBalanced(root.right) )
+		if ( Math.abs(leftHeight - rightHeight) <= 1 && isBalanced(root.left) 
+				&& isBalanced(root.right) )
 		{
 			return true;
 		}
@@ -406,9 +421,10 @@ public class BST<E extends Comparable<E>>
 	/**
 	 * Returns the number of nodes in this tree
 	 * 
+	 * Time Complexity: O(1).
+	 * 
 	 * @return the number of nodes in this tree
 	 * 
-	 *         Time Complexity: O(1).
 	 */
 	public int size()
 	{
@@ -461,8 +477,10 @@ public class BST<E extends Comparable<E>>
 	 * 
 	 * @param rootOfTree
 	 *            root of current tree
+	 * 
 	 * @param rootOfSubTree
 	 *            root of the subtree to be checked
+	 * 
 	 * @return true if they are identical i.e. they have the same values
 	 *         it does not necessarily means they are the same tree
 	 */
@@ -484,22 +502,25 @@ public class BST<E extends Comparable<E>>
 
 		// Check if the data is the same in both roots and the data of left and
 		// right subtrees are also the same
-		return (rootOne.element == rootTwo.element && areIdentical(rootOne.left, rootTwo.left)
+		return (rootOne.element == rootTwo.element 
+				&& areIdentical(rootOne.left, rootTwo.left)
 				&& areIdentical(rootOne.right, rootTwo.right));
 
 	}
 
 	/**
-	 * Returns true if rootTwo is a subtree of rootOne
+	 * Returns true if rootTwo is a subtree of rootOne.
+	 * 
+	 * Time Complexity: O(mn). Where m and n are the nodes in the given trees.
 	 * 
 	 * @param rootOne
 	 *            a tree
+	 * 
 	 * @param rootTwo
 	 *            another tree to check if it is a subtree of rootOne
+	 * 
 	 * @return true if two is subtree of one
 	 * 
-	 *         Time Complexity: O(mn). Where m and n are the nodes in the given
-	 *         trees.
 	 */
 	public boolean isSubTree( BSTNode<E> rootOne, BSTNode<E> rootTwo )
 	{
@@ -525,12 +546,28 @@ public class BST<E extends Comparable<E>>
 
 		// if the tree with root as current node does not match
 		// then try left and right subtrees one by one
-		return isSubTree(rootOne.left, rootTwo) || isSubTree(rootOne.right, rootTwo);
+		return isSubTree(rootOne.left, rootTwo) 
+				|| isSubTree(rootOne.right, rootTwo);
 	}
 
-	// AVL Rotations
+	// AVL Rotations, Insetions, Deletions
+	// Miguel Espinal
+
 	// Rotations
 	// Right Rotate
+
+	/**
+	 * Right rotation. Is a single rotation to right rotate the subtree
+	 * rooted with k2 (case #1).
+	 * 
+	 * @param k2
+	 *            The node to be rotated.
+	 * @return k1 as the rotated tree.
+	 * 
+	 *         Time Complexity: O(1). The rotation is only done at the first
+	 *         node, where imbalance exists, on the path from the inserted node
+	 *         to the root. To update the heights is also constant time.
+	 */
 	public BSTNode<E> rotateWithLeftChild( BSTNode<E> k2 )
 	{
 		BSTNode<E> k1 = k2.left;
@@ -543,7 +580,18 @@ public class BST<E extends Comparable<E>>
 		return k1; // return new root
 	}
 
-	// Left Rotate
+	/**
+	 * Left rotation. Is a single rotation to left rotate the subtree
+	 * rooted with k1 (case #4).
+	 * 
+	 * @param k1
+	 *            The node to be rotated.
+	 * @return k2 as the rotated tree.
+	 * 
+	 *         Time Complexity: O(1). The rotation is only done at the first
+	 *         node, where imbalance exists, on the path from the inserted node
+	 *         to the root. To update the heights is also constant time.
+	 */
 	public BSTNode<E> rotateWithRightChild( BSTNode<E> k1 )
 	{
 		BSTNode<E> k2 = k1.right;
@@ -557,63 +605,115 @@ public class BST<E extends Comparable<E>>
 	}
 
 	// Double Rotations
+
+	/**
+	 * Double rotation. First left child with its right child; then node k3
+	 * with the new left child.
+	 * 
+	 * Time Complexity: O(1*2). Is equivalent to a sequence of two
+	 * single rotations.
+	 * 
+	 * @param k3
+	 *            The node to be rotated.
+	 * @return the right rotation of k3.
+	 * 
+	 */
 	public BSTNode<E> doubleWithLeftChild( BSTNode<E> k3 )
 	{
 		k3.left = rotateWithRightChild(k3.left);
 		return rotateWithLeftChild(k3);
 	}
 
-	public BSTNode<E> doubleWithRightChild( BSTNode<E> k1 )
+	/**
+	 * Double rotation. First right child with its left child; then node k3
+	 * with the new right child.
+	 * 
+	 * @param k3
+	 *            The node to be rotated.
+	 * @return the left rotation of k3.
+	 * 
+	 *         Time Complexity: O(1*2). Is equivalent to a sequence of two
+	 *         single rotations.
+	 */
+	public BSTNode<E> doubleWithRightChild( BSTNode<E> k3 )
 	{
-		k1.right = rotateWithLeftChild(k1.right);
-		return rotateWithRightChild(k1);
+		k3.right = rotateWithLeftChild(k3.right);
+		return rotateWithRightChild(k3);
 	}
 
-	// Get Balance factor
-	public int getBalance( BSTNode<E> node )
+	// Helper method to get the balance factor of a node n.
+	private int getBalance( BSTNode<E> node )
 	{
 		if ( node == null )
 			return 0;
 
+		// Substract heights to get the factor
 		return height(node.left) - height(node.right);
 	}
 
+	/**
+	 * Inserts a record into the tree. Records can be anything, but must be
+	 * Comparable.
+	 * 
+	 * Time Complexity: O(log n). The cost of inserting a record is the depth
+	 * of the node inserted. In the worst case it can take the full height
+	 * of the tree thus O(n) (same as BST insert). But, since the AVL tree is
+	 * balanced the depth of the node (its height) is O(log n), therefore the
+	 * complexity for an AVL Insert is O(log n).
+	 * 
+	 * @param element
+	 *            the record to insert.
+	 */
 	public void AVLinsert( E element )
 	{
 		root = AVLinserthelp(root, element);
 		nodecount++;
 	}
 
+	// Helper method for the AVL insert
 	private BSTNode<E> AVLinserthelp( BSTNode<E> root, E element )
 	{
-		/* BST Rotation */
-
+		// BST Rotation
+		// Checks what the root is pointing to.
 		if ( root == null )
 		{
-			// empty tree
 			return new BSTNode<E>(element);
 		}
 
 		if ( root.element.compareTo(element) == 0 )
 		{
-			// elements are equal, no duplicates, do nothing
+			// the compared elements in the tree are equal
+			// duplicates are not allowed, therefore
+			// nothing happens
 		}
 		else if ( root.element.compareTo(element) > 0 )
 		{
-			// the root is greater than the element we have
+			// the element at the root is greater than
+			// what we are looking for, so we visit the left side of the tree
+			// and we assign the element to its corresponding place as
+			// the left child of the current processed root
 			root.left = AVLinserthelp(root.left, element);
 		}
 		else
-			// the root is smaller
+			// the element at the root is less than
+			// what we are looking for, so we visit the right side of the tree
+			// and we assign the element to its corresponding place as
+			// the right child of the current processed root
 			root.right = AVLinserthelp(root.right, element);
 
-		// Update height
+		// Update heights
 		root.setHeight(Math.max(height(root.left), height(root.right)) + 1);
 
-		// Get balance
+		// Get balance factor of the current root
 		int balance = getBalance(root);
 
 		// For an unbalanced node we have 4 cases
+		// If the balance factor is greater than 1, then the current node
+		// is unbalanced so the cases are a right rotation and a left with
+		// right double rotation. Otherwise, if the balance factor is -1
+		// the remaining cases apply, left rotation and right with left
+		// double rotation.
+
 		// Left Left
 		if ( balance > 1 && element.compareTo(root.left.element) < 0 )
 		{
@@ -641,6 +741,21 @@ public class BST<E extends Comparable<E>>
 		return root; // Return initial root node
 	}
 
+	/**
+	 * Delete a record of the tree.
+	 * 
+	 * Time Complexity: O(n). In the worst case a deletion can take the
+	 * full height of a tree, thus O(n). It depends on the depth of the
+	 * node to be removed (same as BST remove). But, since the AVL tree
+	 * is balanced the depth of the node (its height) is O(log n), therefore
+	 * the complexity for an AVL Insert is O(log n).
+	 * 
+	 * @param key
+	 *            the value of the record to remove.
+	 * 
+	 * @return the record removed, null if there is none.
+	 * 
+	 */
 	public E AVLremove( E key )
 	{
 		E temp = findhelp(root, key); // First find it
@@ -654,12 +769,12 @@ public class BST<E extends Comparable<E>>
 		return temp;
 	}
 
-	// Miguel Espinal
+	// Helper method for the AVL remove
 	private BSTNode<E> AVLremovehelp( BSTNode<E> root, E element )
 	{
 		if ( root == null )
 		{
-			return root; // nothing to delete
+			return root; // nothing to delete since the root points to null
 		}
 
 		if ( root.element.compareTo(element) > 0 )
@@ -670,22 +785,33 @@ public class BST<E extends Comparable<E>>
 		}
 		else if ( root.element.compareTo(element) < 0 )
 		{
+			// the element is greater than the root
+			// look in the right side until you find it
 			root.right = AVLremovehelp(root.right, element);
 		}
-		else // value found
+		else // the record to be deleted is found
 		{
 			if ( root.left == null )
 			{
+				// the value of the left child is null then we return that
+				// node's right pointer back to the parent
 				return root.right;
 			}
 			else if ( root.right == null )
 			{
+				// the value of the right child is null then we return that
+				// node's left pointer back to the parent
 				return root.left;
 			}
 			else // it has two children
 			{
+				// temporary node with the greatest value in the left subtree
 				BSTNode<E> temp = getmax(root.left);
+				// set the root value to what was returned by getmax
 				root.element = temp.element;
+				// call deletemax to removed the node with the maximum value
+				// in the left subtree and set the root node's left pointer
+				// to the resulting subtree
 				root.left = deletemax(root.left);
 			}
 		}
@@ -693,10 +819,16 @@ public class BST<E extends Comparable<E>>
 		// Update Heights
 		root.setHeight(Math.max(height(root.left), height(root.right)) + 1);
 
-		// Get balance of the root
+		// Get balance factor of the current root
 		int balance = getBalance(root);
 
 		// For an unbalanced node we have 4 cases
+		// If the balance factor is greater than 1, then the current node
+		// is unbalanced so the cases are a right rotation and a right with
+		// left double rotation. Otherwise, if the balance factor is -1
+		// the remaining cases apply, left rotation and left with right
+		// double rotation.
+
 		// Left Left
 		if ( balance > 1 && getBalance(root.left) >= 0 )
 		{
