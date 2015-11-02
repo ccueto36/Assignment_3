@@ -312,7 +312,7 @@ public class SlidesGroups {
                 "Which Node is the parent node with value 15? \n\n"
                         + "A.) The node with value 30 \n"
                         + "B.) The node with value 75 \n"
-                        + "C.) The node with value 15 \n"
+                        + "C.) The node with value 25 \n"
                         + "D.) The node with value 50 \n",
                 Answer.C,
                 BSTSlide_2_tree,
@@ -369,10 +369,10 @@ public class SlidesGroups {
 
         Slide BSTSlide_6 = new Slide(
                  "     What is the height of the WHOLE tree? \n\n"
-                         + "A.) The height is 3"
-                         + "B.) The height is 2"
-                         + "C.) The height is 0"
-                         + "D.) The height is 1",
+                         + "A.) The height is 3 \n"
+                         + "B.) The height is 2 \n"
+                         + "C.) The height is 0 \n"
+                         + "D.) The height is 1 \n",
                  Answer.A,
                  BSTSlide_6_tree,
                  true,

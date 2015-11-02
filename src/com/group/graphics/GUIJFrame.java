@@ -5,9 +5,11 @@
  */
 package com.group.graphics;
 
+import com.group.DoubleLinkedList.DoubleLinkedList;
 import com.group.DoubleLinkedList.LinkedListNode;
 import com.group.Slides.Slide;
 import com.group.Slides.SlidesGroups;
+import com.group.Tools.Answer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,6 +25,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -42,10 +45,12 @@ public class GUIJFrame extends JFrame {
 
     int frameWidth = (int) screenSize.getWidth() * 2 / 6;
     int frameHeight = (int) screenSize.getHeight() * 2 / 3;
-
+    
+    private static int score = 0;
     
     public static JPanel textPanel = new JPanel();
     public static JPanel buttonPanel = new JPanel();
+    public static JPanel layoutPanel = new JPanel();
     public static TreeDrawingPanel drawPanel = new TreeDrawingPanel();
     
     JRadioButton jbtChoice1 = new JRadioButton("A.)") ;
@@ -71,17 +76,34 @@ public class GUIJFrame extends JFrame {
     
     JScrollPane scroll = new JScrollPane(tutorialText) ;
     
+    private static String user = "";
+    
+    public static JPanel statusBarPanel = new JPanel(new BorderLayout());
+    
+    JLabel statusBar = new JLabel();
+    
     private static Slide currentSlide = null;
     private static LinkedListNode<Slide> currentNode = null;
+    private static DoubleLinkedList<Slide> currentGroupOfSlides = null;
 
     public GUIJFrame() {
         super();
         
+        
         init();
+        
         loadSlide(SlidesGroups.welcome.getBack().getNext());
         setResizable(false);
         pack();
+        user = JOptionPane.showInputDialog("Hello to the Binary Search Tree Tutorial.\nHow should we call you?:");
+        while (user == "")
+            user = JOptionPane.showInputDialog("Hello to the Binary Search Tree Tutorial.\nHow should we call you?:");
+        
+        JOptionPane.showMessageDialog(null, "Welcome " + user + "!!!");
+        
         setVisible(true);
+        
+        statusBar.setText("User: " + user );
     }
     
      public GUIJFrame(String title) throws HeadlessException {       
@@ -129,6 +151,8 @@ public class GUIJFrame extends JFrame {
         //GridBag for the "Next" button
         GridBagConstraints gbc_Btn_Next = new GridBagConstraints();
         
+        //GridBag for the "Next" button
+        GridBagConstraints gbc_statusbar = new GridBagConstraints();
 
         //add the drawing frame
         gbc_drawingJPanel.gridx = 0;
@@ -154,7 +178,14 @@ public class GUIJFrame extends JFrame {
         gbc_buttonPanel.gridy = 1;
         gbc_buttonPanel.gridwidth = 2;
         buttonPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-        buttonPanel.setPreferredSize(new Dimension(frameWidth, frameHeight * 1 / 3));
+        buttonPanel.setPreferredSize(new Dimension(frameWidth, frameHeight * 1 / 3 - 20));
+        
+        //statusbar panel
+        gbc_statusbar.gridx = 0;
+        gbc_statusbar.gridy = 2 ;
+        gbc_statusbar.gridwidth =2;  
+        statusBarPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+        statusBarPanel.setPreferredSize(new Dimension(frameWidth,20));
         
         //working with the text area
 //        tutorialText.setPreferredSize(new Dimension(frameWidth * 3/8, frameHeight * 2 / 3));
@@ -163,6 +194,11 @@ public class GUIJFrame extends JFrame {
         tutorialText.setLineWrap(true);
         tutorialText.setWrapStyleWord(true);
 
+        /***********************************************************************
+         * in this part goes the statusBarPanel componets
+         ***********************************************************************/
+        
+        statusBarPanel.add(statusBar,BorderLayout.CENTER);
         
         /***********************************************************************
         * giving textArea ScrollBar and lineWrap
@@ -224,6 +260,7 @@ public class GUIJFrame extends JFrame {
         gbc_Btn_Next.anchor = GridBagConstraints.EAST;
         buttonPanel.add(btnNext, gbc_Btn_Next) ;
         
+        
         /***********************************************************************
         * Puts radioButtons in a group
         ***********************************************************************/
@@ -273,15 +310,45 @@ public class GUIJFrame extends JFrame {
         btnSubmit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                int answer = radioButtonSelected();
+                
+                if (answer == Answer.NONE) {
+                    JOptionPane.showMessageDialog(null,"You must select an answer!");
+                }
+                else if(currentSlide.isAnswered()){
+                    JOptionPane.showMessageDialog(null,"Question already answered, please continue.");
+                }
+                else if (answer != currentSlide.getAnswer()){
+                    if (currentSlide.getAttempts() == 3) {
+                        JOptionPane.showMessageDialog(null,"You have no more chances sorry!");
+                        currentSlide.setAsAnswered();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Incorrect Answer!" );
+                        currentSlide.incrementAttempts();
+                    }
+                }
+                else{
+                    currentSlide.setAsAnswered();
+                    score++;
+                    JOptionPane.showMessageDialog(null,"Good Job! " + score);
+                    statusBar.setText("User: " + user + " | Score: " + score + "/9");
+                    
+                }
+                    
                 System.out.println("'Submit' button was clicked");
             }
         });
         
         btnNext.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
-                loadSlide(currentNode.getNext());
-                System.out.println("'Next' button was clicked");
+                if (currentSlide.isAnswered()) {
+                    loadSlide(currentNode.getNext());
+                    System.out.println("'Next' button was clicked");
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"Question not answer yet!");
+               
             }
         });
         
@@ -299,7 +366,9 @@ public class GUIJFrame extends JFrame {
         BSTTutorialMenu.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                currentGroupOfSlides = SlidesGroups.BSTTutorial;
                 loadSlide(SlidesGroups.BSTTutorial.getBack().getNext());
+                statusBar.setText("User: " + user + " | Score: " + score + "/9");
             }
         });
         
@@ -340,9 +409,13 @@ public class GUIJFrame extends JFrame {
         add(buttonPanel,gbc_buttonPanel);
         add(textPanel, gbc_tutorialPanel);
         add(drawPanel, gbc_drawingJPanel);
+        add(statusBarPanel, gbc_statusbar) ;
     }    
     
     private void loadSlide(LinkedListNode<Slide> node){
+        //clear the selected radioButtons
+        JrbtnGroup.clearSelection();
+        
         currentNode = node;
         //if there is no previous slide set the previous button to disable
         //if there is a previous slide set the previous button to enable
@@ -363,27 +436,35 @@ public class GUIJFrame extends JFrame {
         
         //if the slide has showControls to false we hide the radio buttons and
         //the submit button
-        if (currentSlide.getShowAllControls()) {
-            btnSubmit.setVisible(true);
-            jbtChoice1.setVisible(true);
-            jbtChoice2.setVisible(true);
-            jbtChoice3.setVisible(true);
-            jbtChoice4.setVisible(true);
+        
+        if(currentSlide.isAnswered()){
+            btnSubmit.setEnabled(false);
+            jbtChoice1.setEnabled(false);
+            jbtChoice2.setEnabled(false);
+            jbtChoice3.setEnabled(false);
+            jbtChoice4.setEnabled(false);
+        }
+        else if (currentSlide.getShowAllControls()) {
+            btnSubmit.setEnabled(true);
+            jbtChoice1.setEnabled(true);
+            jbtChoice2.setEnabled(true);
+            jbtChoice3.setEnabled(true);
+            jbtChoice4.setEnabled(true);
             
         }
         else if(currentSlide.getShowBooleanControls()){
-            btnSubmit.setVisible(true);
-            jbtChoice1.setVisible(true);
-            jbtChoice2.setVisible(true);
-            jbtChoice3.setVisible(false);
-            jbtChoice4.setVisible(false);
+            btnSubmit.setEnabled(true);
+            jbtChoice1.setEnabled(true);
+            jbtChoice2.setEnabled(true);
+            jbtChoice3.setEnabled(false);
+            jbtChoice4.setEnabled(false);
         }
         else{
-            btnSubmit.setVisible(false);
-            jbtChoice1.setVisible(false);
-            jbtChoice2.setVisible(false);
-            jbtChoice3.setVisible(false);
-            jbtChoice4.setVisible(false);
+            btnSubmit.setEnabled(false);
+            jbtChoice1.setEnabled(false);
+            jbtChoice2.setEnabled(false);
+            jbtChoice3.setEnabled(false);
+            jbtChoice4.setEnabled(false);
         }
         
         //loads the tree into the drawPanel
@@ -400,6 +481,20 @@ public class GUIJFrame extends JFrame {
         tutorialText.setText(currentSlide.getTextToShow());
         
         
+    }
+    
+    private int radioButtonSelected(){
+        if (jbtChoice1.isSelected()) {
+            return Answer.A;
+        }
+        else if(jbtChoice2.isSelected())
+            return Answer.B;
+        else if(jbtChoice3.isSelected())
+            return Answer.C;
+        else if(jbtChoice4.isSelected())
+            return Answer.D;
+        else
+            return Answer.NONE;
     }
 
 }

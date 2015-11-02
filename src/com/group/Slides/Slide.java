@@ -32,6 +32,10 @@ public class Slide {
     
     //if boolean answer are gonna be available
      private Boolean showBooleanControls;
+     
+     private int attempts;
+     
+     private boolean answered;
    
     public Slide(String textToShow, int answer, BST<Integer> tree, Boolean showControls, Boolean showBooleanControls) {
         this.textToShow = textToShow;
@@ -39,6 +43,9 @@ public class Slide {
         this.tree = tree;
         this.showAllControls = showControls;
         this.showBooleanControls = showBooleanControls;
+        this.attempts = 0;
+        
+        this.answered = !(this.showAllControls || this.showBooleanControls);
     }
     
     public Slide(){
@@ -47,8 +54,26 @@ public class Slide {
         this.tree = null;
         this.showAllControls = false;
         this.showBooleanControls = false;
+        this.attempts = 0;
+        this.answered = true;
     }
 
+    /**
+     * 
+     * @return the amount of attempts
+     */
+    public int getAttempts() {
+        return attempts;
+    }
+
+    /**
+     * 
+     * @return whether the slide has been answered or not
+     */
+    public boolean isAnswered(){
+        return answered;
+    }
+    
     /**
      * 
      * @return the right answer for this slide
@@ -124,6 +149,15 @@ public class Slide {
         this.textToShow = textToShow;
     }
 
+    public void incrementAttempts(){
+        attempts++;
+    }
+    /**
+     * sets the slide as answered
+     */
+    public void setAsAnswered(){
+        answered = true;
+    }
     /**
      * 
      * @param tree tree that is gonna be drawn
