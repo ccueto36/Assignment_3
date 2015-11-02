@@ -105,7 +105,7 @@ public class GUIJFrame extends JFrame {
         while (user == "")
             user = JOptionPane.showInputDialog("Hello to the Binary Search Tree Tutorial.\nHow should we call you?:");
         
-        JOptionPane.showMessageDialog(null, "Welcome " + user + "!!!");
+        JOptionPane.showMessageDialog(null, "Welcome " + user + "!");
         
         setVisible(true);
         
@@ -368,7 +368,7 @@ public class GUIJFrame extends JFrame {
                         output = "D" ;
                     }
                     JOptionPane.showMessageDialog(null, "Sorry, you have ran out"
-                            + "of attempts the answer is: " + output );
+                            + "of attempts, the answer is: " + output );
                 }
                 else if(jbtChoice1.isSelected())
                 {
@@ -379,7 +379,7 @@ public class GUIJFrame extends JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        JOptionPane.showMessageDialog(null, "Sorry, Wrong Answer!");
                         attemptCount++ ;
                         overallCount++ ;
                     }
@@ -394,7 +394,7 @@ public class GUIJFrame extends JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        JOptionPane.showMessageDialog(null, "Sorry, Wrong Answer!");
                         attemptCount++ ;
                         overallCount++ ;
                     }
@@ -408,7 +408,7 @@ public class GUIJFrame extends JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        JOptionPane.showMessageDialog(null, "Sorry, Wrong Answer!");
                         attemptCount++ ;
                         overallCount++ ;
                     }
@@ -422,7 +422,7 @@ public class GUIJFrame extends JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                        JOptionPane.showMessageDialog(null, "Sorry, Wrong Answer!");
                         attemptCount++ ;
                         overallCount++ ;
                     }
@@ -442,7 +442,7 @@ public class GUIJFrame extends JFrame {
                     System.out.println("'Next' button was clicked");
                 }
                 else
-                    JOptionPane.showMessageDialog(null,"Question not answer yet!");
+                    JOptionPane.showMessageDialog(null,"Question not answered yet!");
                
 
                 
@@ -456,9 +456,9 @@ public class GUIJFrame extends JFrame {
         aboutItem.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
-                 JOptionPane.showMessageDialog(null, "This tutorial was made for"
+                 JOptionPane.showMessageDialog(null, "This tutorial was made for "
                          + "COP 3530 and was created by:\n Manuel Garcia \n"
-                         + " Carlos Cuerto \n Fernando Serrano\n Miguel Espinal "
+                         + " Carlos Cueto \n Fernando Serrano\n Miguel Espinal "
                          + "\n Carlos Martinez");
             }
         });
