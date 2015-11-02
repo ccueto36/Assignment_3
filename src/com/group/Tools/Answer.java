@@ -10,5 +10,5 @@ package com.group.Tools;
  * @author admin
  */
 public class Answer {
-    
+public interface Answer {
 }

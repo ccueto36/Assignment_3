@@ -123,7 +123,7 @@ public class TreeDrawingPanel extends StdDrawJPanel {
          //if ((location.x >= getMaxX()) || (location.y >= getMaxY())) throw new IllegalArgumentException("The specified location is invalid");
         picture(location.getX() + 0.5, location.getY() + 0.5, icon ,1,1);
         setPenColor(Color.BLACK);
-        Font font = new Font("SansSerif", Font.PLAIN, 25);
+        Font font = new Font("SansSerif", Font.BOLD, 13);
         setFont(font);
         text(location.getX() + 0.5, location.getY() + 0.5, value);
         }

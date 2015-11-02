@@ -301,7 +301,7 @@ public class BST<E extends Comparable<E>>
         
         downlevel = getLevel(node.right, data, level++);
         return downlevel;
-    }
+    }        
 	
 	
 

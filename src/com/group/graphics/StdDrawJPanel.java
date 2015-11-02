@@ -203,11 +203,14 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     private static Font font;
     
     // double buffered graphics
-    private BufferedImage offscreenImage, onscreenImage;
-    private Graphics2D offscreen, onscreen;
+    private static BufferedImage offscreenImage, onscreenImage;
+    private static Graphics2D offscreen, onscreen;
     
     private int width;
     private int height;
+    
+    ImageIcon icon;
+    JLabel draw;
     
     /***************************************************************************
      * Methods
@@ -254,7 +257,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         setXscale();
         setYscale();
         
-        offscreen.setColor(DEFAULT_CLEAR_COLOR);
+//        offscreen.setColor(DEFAULT_CLEAR_COLOR);
+        offscreen.setColor(Color.BLUE);
         offscreen.fillRect(0, 0, width, height);  
         
         setPenColor();
@@ -264,7 +268,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         
        
         
-        clear();
+//        clear();
         
         
         RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
@@ -273,8 +277,8 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
         offscreen.addRenderingHints(hints);
         
         //Jpanel stuff
-        ImageIcon icon = new ImageIcon(onscreenImage);
-        JLabel draw = new JLabel(icon);
+        icon = new ImageIcon(onscreenImage);
+        draw = new JLabel(icon);
         
         
         draw.addMouseListener(this);
@@ -1103,6 +1107,7 @@ public class StdDrawJPanel extends JPanel implements ActionListener, MouseListen
     
     // draw onscreen if defer is false
     private void draw() {
+        
         if (defer) return;
         onscreen.drawImage(offscreenImage, 0, 0, null);
         

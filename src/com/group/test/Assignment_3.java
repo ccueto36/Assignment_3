@@ -37,26 +37,26 @@ public class Assignment_3 {
             }
         });
         
-        BST tree = new BST();
-
-        
-       tree.insert(50);
-       
-         for (int i = 0; i < 100; i++) {
-            tree.insert((int) (Math.random() * 100));
-            
-        }
-        
-//       tree.insert(25);
-//       tree.insert(15);
-//       tree.insert(30);
-//       tree.insert(75);
-//       tree.insert(65);
-//       tree.insert(85);
-       drawingPanel.clear(Color.BLUE); 
-        drawingPanel.setXscale(0,30);
-        drawingPanel.setYscale(0,30);
-        drawingPanel.paintTree(tree);
+//        BST tree = new BST();
+//
+//        
+//       tree.insert(50);
+//       
+//         for (int i = 0; i < 17; i++) {
+//            tree.insert((int) (Math.random() * 100));
+//            
+//        }
+//        
+////       tree.insert(25);
+////       tree.insert(15);
+////       tree.insert(30);
+////       tree.insert(75);
+////       tree.insert(65);
+////       tree.insert(85);
+//       drawingPanel.clear(Color.BLUE); 
+//        drawingPanel.setXscale(0,30);
+//        drawingPanel.setYscale(0,30);
+//        drawingPanel.paintTree(tree);
     }
 
         
