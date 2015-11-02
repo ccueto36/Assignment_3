@@ -300,7 +300,9 @@ public class SlidesGroups {
         
         Slide BSTSlide_1 = new Slide(
                 "Binary Tree:\n     A Binary Tree is a data structure made up of elements called nodes,"
-                     + " usually containing a node called root as its main node.",
+                     + " usually containing a node called root as its main node and pointers to its right and left. \nAs we can see in the tree shown on the left, "
+                        + "node with value 25 is to the left of the root node and node with value 75 is to its right"
+                        ,
                 Answer.NONE,
                 BSTSlide_1_tree,
                 false,
@@ -322,8 +324,8 @@ public class SlidesGroups {
         );
         
         Slide BSTSlide_3 = new Slide(
-                "Binary Search Trees: \n     A binary search tree(BST) is a special type of Binary Tree that"
-                        + "has three conditions:\n\n"
+                "Binary Search Trees: \n     A Binary Search Tree (BST) is a special type of Binary Tree that"
+                        + "has satisfies three conditions:\n\n"
                         + "1.) All nodes stored in the left subtree of a node "
                         + "whose root must be of value less than or equal to the "
                         + "value in the root node. \n"
