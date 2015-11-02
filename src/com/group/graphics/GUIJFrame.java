@@ -8,6 +8,7 @@ package com.group.graphics;
 import com.group.DoubleLinkedList.LinkedListNode;
 import com.group.Slides.Slide;
 import com.group.Slides.SlidesGroups;
+import com.group.Tools.Answer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -42,7 +43,8 @@ public class GUIJFrame extends JFrame {
 
     int frameWidth = (int) screenSize.getWidth() * 2 / 6;
     int frameHeight = (int) screenSize.getHeight() * 2 / 3;
-
+    int answerChoice = Answer.NONE;
+    int attemptCount = 0 ;
     
     public static JPanel textPanel = new JPanel();
     public static JPanel buttonPanel = new JPanel();
@@ -238,6 +240,7 @@ public class GUIJFrame extends JFrame {
         jbtChoice1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                answerChoice = Answer.A ;
                 System.out.println("Choice 1 was clicked");
             }
         });
@@ -245,6 +248,7 @@ public class GUIJFrame extends JFrame {
         jbtChoice2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                answerChoice = Answer.B ;
                 System.out.println("Choice 2 was clicked");
             }
         });
@@ -252,6 +256,7 @@ public class GUIJFrame extends JFrame {
         jbtChoice3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                answerChoice = Answer.C ;
                 System.out.println("Choice 3 was clicked");
             }
         });
@@ -259,6 +264,7 @@ public class GUIJFrame extends JFrame {
         jbtChoice4.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
+                answerChoice = Answer.D ;
                 System.out.println("Choice 4 was clicked");
             }
         });
@@ -274,6 +280,54 @@ public class GUIJFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 //Action executed when button is pressed.
                 System.out.println("'Submit' button was clicked");
+                if(jbtChoice1.isSelected())
+                {
+                    if(answerChoice == currentNode.getData().getAnswer())
+                    {
+                        JOptionPane.showMessageDialog(null, "Correct!");
+                        
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                    }
+                }
+                if(jbtChoice2.isSelected()) 
+                {
+                    if(answerChoice == currentNode.getData().getAnswer())
+                    {
+                        JOptionPane.showMessageDialog(null, "Correct!");
+                        
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                    }
+                }
+                else if(jbtChoice3.isSelected())
+                {
+                    if(answerChoice == currentNode.getData().getAnswer())
+                    {
+                        JOptionPane.showMessageDialog(null, "Correct!");
+                        
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                    }
+                }
+                else if(jbtChoice4.isSelected())
+                {
+                    if(answerChoice == currentNode.getData().getAnswer())
+                    {
+                        JOptionPane.showMessageDialog(null, "Correct!");
+                        
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Sorry Wrong Answer!");
+                    }
+                }
             }
         });
         
@@ -357,7 +411,7 @@ public class GUIJFrame extends JFrame {
             btnNext.setEnabled(false);
         else
             btnNext.setEnabled(true);
-        
+      
         //load the Node's slide into the currentSlide variable        
         currentSlide = node.getData();
         
