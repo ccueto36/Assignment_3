@@ -360,7 +360,7 @@ public class GUIJFrame extends JFrame {
                         output = "D";
                     }
                     JOptionPane.showMessageDialog(null, "Sorry, you have ran out"
-                            + "of attempts, the answer is: " + output);
+                            + " of attempts, the answer is: " + output);
                 } else if (jbtChoice1.isSelected()) {
                     if (answerChoice == currentNode.getData().getAnswer()) {
                         JOptionPane.showMessageDialog(null, "Correct!");
@@ -407,7 +407,7 @@ public class GUIJFrame extends JFrame {
                         attemptCount = 0;
                         currentSlide.setAsAnswered();
                         score++;
-                        JOptionPane.showMessageDialog(null, "Good Job! Score: " + score + "/10");
+                        JOptionPane.showMessageDialog(null, "Good Job! Score: " + score + "/9");
                         statusBar.setText("User: " + user + " | Score: " + score + "/9");
                     } else {
                         JOptionPane.showMessageDialog(null, "Sorry, Wrong Answer!");
