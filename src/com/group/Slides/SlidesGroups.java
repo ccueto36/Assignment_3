@@ -410,7 +410,7 @@ public class SlidesGroups {
         Slide BSTSlide_9 = new Slide(
                  "Leaf Nodes:\n     A leaf node is a node with no children "
                          + "attached to it. For example, the leaf nodes in this "
-                         + "tree are 10, 16, 33.",
+                         + "tree are nodes with values 10, 16, and 33.",
                  Answer.NONE,
                  BSTSlide_9_tree,
                  false,

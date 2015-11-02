@@ -101,9 +101,9 @@ public class GUIJFrame extends JFrame {
         loadSlide(SlidesGroups.welcome.getBack().getNext());
         setResizable(false);
         pack();
-        user = JOptionPane.showInputDialog("Hello to the Binary Search Tree Tutorial.\nHow should we call you?:");
+        user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?:");
         while (user == "")
-            user = JOptionPane.showInputDialog("Hello to the Binary Search Tree Tutorial.\nHow should we call you?:");
+            user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?:");
         
         JOptionPane.showMessageDialog(null, "Welcome " + user + "!");
         
@@ -334,15 +334,15 @@ public class GUIJFrame extends JFrame {
                         JOptionPane.showMessageDialog(null,"You have no more chances sorry!");
                         currentSlide.setAsAnswered();
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Incorrect Answer!" );
-                        currentSlide.incrementAttempts();
-                    }
+//                    else{
+//                        JOptionPane.showMessageDialog(null,"Incorrect Answer!" );
+//                        currentSlide.incrementAttempts();
+//                    }
                 }
                 else{
                     currentSlide.setAsAnswered();
                     score++;
-                    JOptionPane.showMessageDialog(null,"Good Job! " + score);
+                    JOptionPane.showMessageDialog(null,"Good Job! Score: " + score + "/10");
                     statusBar.setText("User: " + user + " | Score: " + score + "/9");
                     
                 }

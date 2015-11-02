@@ -129,17 +129,17 @@ public class TreeDrawingPanel extends StdDrawJPanel {
         }
     
     public void draw_node(BSTNode node, Location position, double offset) {
-        paintDot(position, RED_ICON,Integer.toString((int) node.element));
+        paintDot(position, LIGHT_GREEN_ICON,Integer.toString((int) node.element));
         if (node.left != null) {
             Location location = new Location(position.getX() - offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, RED_ICON ,Integer.toString((int)node.element)); // redraws circle over the line
+            paintDot(position, LIGHT_GREEN_ICON ,Integer.toString((int)node.element)); // redraws circle over the line
             draw_node(node.left, location, offset / 2);
         }
         if (node.right != null) {
             Location location = new Location(position.getX() + offset, position.getY() + 2);
             paintLine(position, location);
-            paintDot(position, RED_ICON, Integer.toString((int) node.element)); // redraws circle over the line
+            paintDot(position, LIGHT_GREEN_ICON, Integer.toString((int) node.element)); // redraws circle over the line
             draw_node(node.right, location, offset / 2);
         }
     }
