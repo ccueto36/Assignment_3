@@ -312,7 +312,7 @@ public class SlidesGroups {
                 "Which Node is the parent node with value 15? \n\n"
                         + "A.) The node with value 30 \n"
                         + "B.) The node with value 75 \n"
-                        + "C.) The node with value 15 \n"
+                        + "C.) The node with value 25 \n"
                         + "D.) The node with value 50 \n",
                 Answer.C,
                 BSTSlide_2_tree,
