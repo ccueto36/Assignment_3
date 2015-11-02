@@ -101,9 +101,13 @@ public class GUIJFrame extends JFrame {
         loadSlide(SlidesGroups.welcome.getBack().getNext());
         setResizable(false);
         pack();
-        user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?:");
+        user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?");
         while (user == "")
-            user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?:");
+            user = JOptionPane.showInputDialog("Welcome to the Binary Search Tree Tutorial.\nHow should we call you?");
+        if(user.equals(""))
+        {
+            user = "guest";
+        }
         
         JOptionPane.showMessageDialog(null, "Welcome " + user + "!");
         
