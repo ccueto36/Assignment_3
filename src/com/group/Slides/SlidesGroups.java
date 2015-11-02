@@ -330,7 +330,7 @@ public class SlidesGroups {
                         + "2.) All nodes stored in the right subtree of a node "
                         + "(int n) must be of value more than the value of the "
                         + "root node. \n"
-                        + "3.) No Duplicate values",
+                        + "3.) No duplicate values",
                 Answer.NONE,
                 BSTSlide_3_tree,
                 false,
@@ -420,10 +420,10 @@ public class SlidesGroups {
         
         Slide BSTSlide_10 = new Slide(
                  "     What are the leaf node(s) of this tree? \n\n"
-                         + "A.) The leaf are 12 y 98\n"
-                         + "B.) The leaf are 3, 22, 43, 78 \n"
-                         + "C.) The leaf are 3, 22, 78\n"
-                         + "D.) The leaf are 3, 22\n",
+                         + "A.) The leaves are 12 and 98\n"
+                         + "B.) The leaves are 3, 22, 43, 78 \n"
+                         + "C.) The leaves are 3, 22, 78\n"
+                         + "D.) The leaves are 3, 22\n",
                  Answer.B,
                  BSTSlide_10_tree,
                  true,
@@ -492,7 +492,7 @@ public class SlidesGroups {
         
         Slide BSTSlide_15 = new Slide(
                  "     What values will be outputted when this tree is traversed "
-                         + "in postorder? \n\n"
+                         + "in post-order fashion? \n\n"
                          + "A.) 12, 34, 56, 76, 78, 38, 60\n"
                          + "B.) 12, 34, 38, 56, 60, 76, 78\n"
                          + "C.) 12, 38, 34, 60, 78, 76, 56\n"
@@ -508,7 +508,7 @@ public class SlidesGroups {
                  "Inserting Nodes in a Binary Search Tree:\n     To insert a node "
                          + "into a Binary Search Tree first you must compare the "
                          + "value of the root node with the value of the node you "
-                         + "wish to insert. if the node is smaller than the root "
+                         + "wish to insert. If the node is smaller than the root "
                          + "of the left subtree will be checked in the same way as "
                          + "the root. This process will continue until we reach a "
                          + "leaf node where a final check will occur. To see an "
@@ -525,10 +525,10 @@ public class SlidesGroups {
                  "Inserting Nodes in a Binary Search Tree:\n     Here we can "
                          + "appreciate how the 11 has been inserting to "
                          + "the right side of 10. We compare 11 to 25 "
-                         + "and we traverse left because it is smaller. then we compare to 10 "
+                         + "and we traverse left because it is smaller, then we compare to 10 "
                          + "and we now traverse right because it is bigger. "
                          + "Because we have no other "
-                         + "nodes to compare to we insert it in that position",
+                         + "nodes to compare to, we insert it in that position",
                  Answer.NONE,
                  BSTSlide_17_tree,
                  false,
@@ -539,8 +539,8 @@ public class SlidesGroups {
          Slide BSTSlide_18 = new Slide(
                  "Where would the value 31 be added in this Binary Search Tree?\n\n"
                          + "A.) It cannot be inserted \n"
-                         + "B.) left side of 5 \n"
-                         + "C.) right side of 16 \n"
+                         + "B.) Left side of 5 \n"
+                         + "C.) Right side of 16 \n"
                          + "D.) Left side of 34 \n",
                  Answer.D,
                  BSTSlide_18_tree,
@@ -553,14 +553,14 @@ public class SlidesGroups {
                  "Removing Node From Tree:\n     Deleting a node is a bit more "
                          + "complicated than inserting a node. This is mainly due to "
                          + "the fact that there are three different scenarios to consider:\n\n"
-                         + "1.)     The node you want to delete is a leaf node then "
+                         + "1.)     The node you want to delete is a leaf node, then "
                          + "the node is just simply deleted\n"
                          + "2.)     If the node you want to delete has only one child "
-                         + "node attached to it than after you delete the node "
+                         + "node attached to it, then after you delete the node "
                          + "you must change the pointer that "
                          + "was originally pointing to the child elsewhere that is appropriate\n"
                          + "3.)     If the node you want to delete has two child nodes "
-                         + "than after you delete the node you want to delete you"
+                         + "then after you delete the node you want to delete, you"
                          + " must replace the node you are going to delete with "
                          + "either the smallest element in the right subtree OR the "
                          + "largest element in the left subtree. After you replace the "
@@ -615,13 +615,13 @@ public class SlidesGroups {
          
          Slide BSTSlide_24 = new Slide(
                  "Single Rotation:\n     Rotations are used to balance previously "
-                         + "unbalanced trees there are two kinds of rotations; Single "
+                         + "unbalanced trees. There are two kinds of rotations: Single "
                          + "Rotations and Double Rotations. A single rotation switches "
                          + "the roles of the parent and child nodes while maintaining the "
                          + "search order of the tree. Single rotations handle two different cases:\n\n"
                          + "1.)     When a node is inserted into the left subtree of the "
                          + "left child of the node that will be rebalanced \n"
-                         + "2.)When a node is inserted into the right Subtree of "
+                         + "2.)     When a node is inserted into the right Subtree of "
                          + "the right child of the node that will be rebalanced\n\n"
                          + " An example of a single rotation will be seen in the next slide. "
                          + "Where the current unbalanced right subtree will be rotated so as to balance it.",
@@ -643,8 +643,8 @@ public class SlidesGroups {
          );
 
          Slide BSTSlide_26 = new Slide(
-                 "Which Subtree is unbalanced and which \"direction\" will that "
-                         + "subtree be rotated in to balance it?\n\n"
+                 "Which subtree is unbalanced and in which \"direction\" will that "
+                         + "subtree be rotated in order to balance it?\n\n"
                          + "A.) Left subtree, left \n" 
                          + "B.) Left subtree, right \n" 
                          + "C.) Right subtree, left \n" 
@@ -658,8 +658,8 @@ public class SlidesGroups {
          
          Slide BSTSlide_27 = new Slide(
                  "Double Rotation:\n     Double rotation is used to balance a "
-                         + "tree just like single rotation except Double rotation "
-                         + "has is used in two different cases where a single rotation will not be enough.\n\n"
+                         + "tree just like single rotation, except double rotation "
+                         + "has its use in two different cases where a single rotation will not be enough.\n\n"
                          + "1.) When a node is inserted in the right subtree of the left child of the node that will be rebalanced \n"
                          + "2.) When a node is inserted in the left subtree of the right child of the node that will be rebalanced \n\n"
                          + "In the two cases stated above single rotation will "
@@ -667,7 +667,7 @@ public class SlidesGroups {
                          + "to re-balance the binary tree. A double rotation in practice "
                          + "is simply just two single rotations. One to rotate the node"
                          + " we need to rebalance and then another rotation on the now "
-                         + "rotated subtree. This unbalced tree illustrated here will be "
+                         + "rotated subtree. This unbalanced tree illustrated here will be "
                          + "re-balanced using double rotation in the next slide. (Press \"next\") ",
                  Answer.NONE,
                  BSTSlide_27_tree,
@@ -678,7 +678,7 @@ public class SlidesGroups {
          
          Slide BSTSlide_28 = new Slide(
                  "As you can see here the right subtree where 67 is the root was "
-                         + "rotated to the right being now 55 the root. Then the "
+                         + "rotated to the right, which makes 55 now the root. Then the "
                          + "subtree where 45 is the root was rotated to the left "
                          + "being now 55 the root.",
                  Answer.NONE,
