@@ -359,8 +359,11 @@ public class GUIJFrame extends JFrame {
                     } else if (currentNode.getData().getAnswer() == Answer.D) {
                         output = "D";
                     }
+                    
                     JOptionPane.showMessageDialog(null, "Sorry, you have ran out"
                             + " of attempts, the answer is: " + output);
+                    loadSlide(currentNode.getNext());
+                    
                 } else if (jbtChoice1.isSelected()) {
                     if (answerChoice == currentNode.getData().getAnswer()) {
                         JOptionPane.showMessageDialog(null, "Correct!");
