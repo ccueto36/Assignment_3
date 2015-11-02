@@ -328,7 +328,8 @@ public class SlidesGroups {
                         + "whose root must be of value less than or equal to the "
                         + "value in the root node. \n"
                         + "2.) All nodes stored in the right subtree of a node "
-                        + "(int n) must be of value more than . \n"
+                        + "(int n) must be of value more than the value of the "
+                        + "root node. \n"
                         + "3.) No Duplicate values",
                 Answer.NONE,
                 BSTSlide_3_tree,
@@ -351,7 +352,7 @@ public class SlidesGroups {
         Slide BSTSlide_5 = new Slide(
                  "Binary Trees: Height:\n     The height of a Binary Tree is simply the MAXIMUM distance when"
                          + " traveling from the root to the node. An easy way to "
-                         + "find the height is to cound the number of \"Edges\" "
+                         + "find the height is to count the number of \"Edges\" "
                          + "in the path from the root to the node. \n"
                          + "     If a tree only "
                          + "has one node then the height of the tree is zero, due "
@@ -523,9 +524,10 @@ public class SlidesGroups {
          Slide BSTSlide_17 = new Slide(
                  "Inserting Nodes in a Binary Search Tree:\n     Here we can "
                          + "appreciate how the 11 has been inserting to "
-                         + "the right side of 10. We compared to 25 "
-                         + "and we go left because is smaller. then we compare to 10 "
-                         + "and we go right because is bigger. Because we have no other "
+                         + "the right side of 10. We compare 11 to 25 "
+                         + "and we traverse left because it is smaller. then we compare to 10 "
+                         + "and we now traverse right because it is bigger. "
+                         + "Because we have no other "
                          + "nodes to compare to we insert it in that position",
                  Answer.NONE,
                  BSTSlide_17_tree,
@@ -536,10 +538,10 @@ public class SlidesGroups {
          
          Slide BSTSlide_18 = new Slide(
                  "Where would the value 31 be added in this Binary Search Tree?\n\n"
-                         + "A.) It is not allow to insert it\n"
-                         + "B.) left side of 5\n"
-                         + "C.) right side of 16\n"
-                         + "D.) Left side of 34\n",
+                         + "A.) It cannot be inserted \n"
+                         + "B.) left side of 5 \n"
+                         + "C.) right side of 16 \n"
+                         + "D.) Left side of 34 \n",
                  Answer.D,
                  BSTSlide_18_tree,
                  true,
@@ -549,13 +551,13 @@ public class SlidesGroups {
          
          Slide BSTSlide_19 = new Slide(
                  "Removing Node From Tree:\n     Deleting a node is a bit more "
-                         + "complicated than inserting a node. This is mainly on "
+                         + "complicated than inserting a node. This is mainly due to "
                          + "the fact that there are three different scenarios to consider:\n\n"
                          + "1.)     The node you want to delete is a leaf node then "
                          + "the node is just simply deleted\n"
                          + "2.)     If the node you want to delete has only one child "
                          + "node attached to it than after you delete the node "
-                         + "you want to delete you must change the pointer that "
+                         + "you must change the pointer that "
                          + "was originally pointing to the child elsewhere that is appropriate\n"
                          + "3.)     If the node you want to delete has two child nodes "
                          + "than after you delete the node you want to delete you"
